@@ -1,0 +1,34 @@
+<xml>
+    <proxy>
+        <group>sources</group>
+        <name>PeanoReader</name>
+        <label>Peano reader</label>
+        <documentation>
+            <brief>Read a Dan file.</brief>
+            <long>
+       The Dan reader reads Dan files, and the output is a Dan. The default file extension is .dan.
+     </long>
+        </documentation>
+        <property>
+            <name>FileName</name>
+            <label>FileName</label>
+            <documentation>
+                <brief/>
+                <long>
+          This property specifies the file name for the LAS reader.
+        </long>
+            </documentation>
+            <defaults/>
+            <domains>
+                <domain>
+                    <text> The value(s) must be a filename (or filenames).</text>
+                </domain>
+            </domains>
+        </property>
+        <ReaderFactory extensions="peano-patch-file" file_description="Peano Patch File Format"/>
+    </proxy>
+    <categoryindex>
+        <label>Readers</label>
+        <item proxy_name="PeanoReader" proxy_group="sources"/>
+    </categoryindex>
+</xml>

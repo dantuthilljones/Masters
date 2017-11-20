@@ -1,0 +1,13 @@
+Like vtkImageData , the topology of vtkStructuredGrid is regular and is defined
+by specifying dimensions in the topological i-j-k coordinate system. However,
+the geometry of vtkStructuredGrid is realized by specifying point coordinates in
+the global x-y-z coordinate system.
+The abstract data class vtkPoints is used to represent the point coordinates.
+vtkPoints refers to an underlying instance of vtkDataArray which actually holds
+the representation of the points as a contiguous array of three-component
+tuples.
+A particular point coordinate may be retrieved or inserted by specifying a
+particular point id. The numbering of the points and cells is implicit in the
+same fashion as vtkImageData. Care must be taken to insure that the number of
+points in the data array is the same as that implied by the dimensions of the
+grid.

@@ -1,0 +1,90 @@
+/*
+ * PeanoVTK.cpp
+ *
+ *  Created on: 17 Oct 2017
+ *      Author: dan
+ */
+
+#include <boost/version.hpp>
+#include <iostream>
+
+#include "PeanoPatchReader.h"
+#include "vtkPoints.h"
+#include "vtkSmartPointer.h"
+#include "vtkStructuredPoints.h"
+#include "vtkStructuredPointsWriter.h"
+#include "vtkUnstructuredGrid.h"
+#include "vtkXMLUnstructuredGridWriter.h"
+#include "vtkCellArray.h"
+#include "vtkDoubleArray.h"
+#include "vtkPointData.h"
+
+int main() {
+	std::cout << "My first boost program with version: " << BOOST_LIB_VERSION << std::endl;
+
+	//PeanoPatchReader* reader = new PeanoPatchReader("/home/dan/Documents/exahype/exahype/Demonstrators/EulerFV/variables-0.peano-patch-file");
+
+	vtkSmartPointer<vtkStructuredPoints> points = vtkSmartPointer<vtkStructuredPoints>::New();
+	points->SetDimensions(10, 10, 10);
+	//points->SetExtent(0,10,0,10,0,10);
+	//points->SetSpacing(1,1,1);
+	//points->SetOrigin(0,0,0)
+
+	points->AllocateScalars(VTK_DOUBLE, 1);
+	//points->SetNumberOfScalarComponents(1);
+	//points->SetScalarTypeToDouble();
+
+	for(int i = 0; i < 10; i++) {
+		for(int j = 0; j < 10; j++) {
+			for(int k = 0; k < 10; k++) {
+				points->SetScalarComponentFromDouble(i, j, k, 0, i+j+k);
+				//double* pixel = static_cast<double*>(points->GetScalarPointer(i,j,k));
+				//pixel[0] = i*j*k;
+			}
+		}
+	}
+
+	//	vtkSmartPointer<vtkStructuredPointsWriter> writer = vtkSmartPointer<vtkStructuredPointsWriter>::New();
+	//	writer->SetFileName("output.vtu");
+	//	writer->AddInputDataObject(0, points);
+	//	writer->Write();
+
+	// Copy the points from the StructuredPoints to the UnstructuredGrid
+
+	vtkSmartPointer<vtkPoints> gridPoints = vtkSmartPointer<vtkPoints>::New();
+
+	//retrieve the entries from the grid and print them to the screen
+	unsigned int counter = 0;
+	for(vtkIdType i = 0; i < points->GetNumberOfPoints(); i++) {
+		double p[3];
+		points->GetPoint(i, p);
+		gridPoints->InsertNextPoint(p);
+	}
+
+
+	vtkSmartPointer<vtkDoubleArray> gridData = vtkSmartPointer<vtkDoubleArray>::New();
+	gridData->SetName("Q");
+	gridData->SetNumberOfComponents(1);
+
+	for(int i = 0; i < 10; i++) {
+		for(int j = 0; j < 10; j++) {
+			for(int k = 0; k < 10; k++) {
+				double* val = (double*) points->GetScalarPointer(i, j, k);
+				std::cout << "inserting " << *val << "\n";
+				gridData->InsertNextTuple(val);
+			}
+		}
+	}
+
+
+	vtkSmartPointer<vtkUnstructuredGrid> ug = vtkSmartPointer<vtkUnstructuredGrid>::New();
+	ug->SetPoints(gridPoints);
+	ug->GetPointData()->SetScalars(gridData);
+
+	vtkSmartPointer<vtkXMLUnstructuredGridWriter> writer = vtkSmartPointer<vtkXMLUnstructuredGridWriter>::New();
+	writer->SetFileName("output.vtu");
+	writer->AddInputDataObject(0, ug);
+	writer->Write();
+
+}
+

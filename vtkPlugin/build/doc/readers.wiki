@@ -1,0 +1,27 @@
+
+==Peano reader==
+
+Read a Dan file.
+The Dan reader reads Dan files, and the output is a Dan. The default file extension is .dan.
+
+
+{| class="PropertiesTable" border="1" cellpadding="5"
+|-
+| '''Property'''
+| '''Description'''
+| '''Default Value(s)'''
+| '''Restrictions'''
+
+|-
+|'''FileName''' (FileName)
+|
+
+This property specifies the file name for the LAS reader.
+
+|
+
+|
+The value(s) must be a filename (or filenames).
+
+|}
+

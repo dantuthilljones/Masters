@@ -1,0 +1,3 @@
+/home/dan/Documents/Masters/ConeExample/build/CMakeFiles/rebuild_cache.dir
+/home/dan/Documents/Masters/ConeExample/build/CMakeFiles/edit_cache.dir
+/home/dan/Documents/Masters/ConeExample/build/CMakeFiles/Cone.dir
