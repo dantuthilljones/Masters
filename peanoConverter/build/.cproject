@@ -102,12 +102,13 @@
 			</scannerInfoProvider>
 		</profile>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 	<storageModule moduleId="org.eclipse.cdt.core.pathentry">
-		<pathentry kind="src" path="[Source directory]"/>
-		<pathentry excluding="[Source directory]/|**/CMakeFiles/" kind="out" path=""/>
 		<pathentry kind="mac" name="vtkRenderingCore_AUTOINIT" path="" value="2(vtkInteractionStyle,vtkRenderingOpenGL2)"/>
 		<pathentry include="/usr/local/include/vtk-8.0" kind="inc" path="" system="true"/>
 		<pathentry include="/home/dan/Documents/boost_1_65_1" kind="inc" path="" system="true"/>
+		<pathentry kind="src" path="[Source directory]"/>
+		<pathentry excluding="[Source directory]/|**/CMakeFiles/" kind="out" path=""/>
 	</storageModule>
-	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 </cproject>

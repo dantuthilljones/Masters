@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/PeanoVTK.dir/PeanoPatch.cpp.o"
   "CMakeFiles/PeanoVTK.dir/PeanoPatchData.cpp.o"
-  "CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.o"
+  "CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.o"
+  "CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.o"
   "CMakeFiles/PeanoVTK.dir/PeanoVariable.cpp.o"
   "CMakeFiles/PeanoVTK.dir/PeanoVTK.cpp.o"
   "CMakeFiles/PeanoVTK.dir/PeanoConverter.cpp.o"

@@ -81,7 +81,7 @@ int VTK_EXPORT vtkPeanoReaderCommand(vtkClientServerInterpreter *arlu, vtkObject
     }
 
   {
-    const char* commandName = "vtkStructuredGridAlgorithm";
+    const char* commandName = "vtkUnstructuredGridAlgorithm";
     if (arlu->HasCommandFunction(commandName) &&
         arlu->CallCommandFunction(commandName, op, method, msg, resultStream)) { return 1; }
   }

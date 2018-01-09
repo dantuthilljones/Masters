@@ -1,7 +1,12 @@
 #include "vtkPeanoReader.h"
 
+#include "PeanoReader.h"
+#include "PeanoConverter.h"
+#include "PeanoMetaReader.h"
+
 #include <fstream>
 
+#include "vtkUnstructuredGrid.h"
 #include "vtkStructuredGridAlgorithm.h"
 #include "vtkStructuredGrid.h"
 #include "vtkInformation.h"
@@ -20,8 +25,6 @@ vtkPeanoReader::vtkPeanoReader() {
 
   //no inputs
   this->SetNumberOfInputPorts(0);
-  //one output (a single unstructured grid)
-  this->SetNumberOfOutputPorts(1);
 }
 
 //----------------------------------------------------------------------------
@@ -32,33 +35,50 @@ vtkPeanoReader::~vtkPeanoReader() {
 
 //----------------------------------------------------------------------------
 int vtkPeanoReader::RequestData(vtkInformation *vtkNotUsed(request), vtkInformationVector **inputVector, vtkInformationVector *outputVector) {
-  // vtkInformation *outInfo = outputVector->GetInformationObject(0);
-  // vtkStructredGrid *output = vtkStructredGrid::SafeDownCast(outInfo->Get(vtkStructredGrid::DATA_OBJECT()));
-  //
-  // //create the points of the grid
-  // vtkSmartPointer<vtkPoints> points = vtkSmartPointer<vtkPoints>::New();
-  // double x, y, z;
-  //
-  // x = 0.0;
-  // y = 0.0;
-  // z = 0.0;
-  //
-  // for(unsigned int k = 0; k < 2; k++) {
-  //   z += 2.0;
-  //   for(unsigned int j = 0; j < 3; j++) {
-  //     y += 1.0;
-  //     for(unsigned int i = 0; i < 2; i++) {
-  //       x += .5;
-  //       points->InsertNextPoint(x, y, z);
-  //       }
-  //     }
-  //   }
-  //
-  // // Specify the dimensions of the grid
-  // output->SetDimensions(2,3,2);
-  // output->SetPoints(points);
+    if (!this->GetFileName()) {
+        vtkErrorMacro("Filename is not set");
+        return 0;
+    }
 
+    std::cout << "Reading initial file " << this->GetFileName() << "...\n";
+    PeanoMetaReader* metaReader = new PeanoMetaReader(this->GetFileName());
+    std::vector<std::vector<std::string>> datasets = metaReader->getDataSets();
+
+    //set the number of outputs
+    this->SetNumberOfOutputPorts(datasets.size());
+
+    //#pragma omp parallel for
+    for(uint i = 0; i < datasets.size(); i++) {
+    //for(uint i = 0; i < 1; i++) {
+
+        std::vector<std::string> dataset = datasets[i];
+        std::vector<PeanoReader*> readers;
+        for(uint j = 0; j < dataset.size(); j++) {
+            std::string file = dataset[j];
+            std::cout << "Reading data from " << file << "...\n";
+            PeanoReader* reader = new PeanoReader(file);
+            readers.push_back(reader);
+        }
+
+        std::cout << "Setting output grid...\n";
+        vtkSmartPointer<vtkUnstructuredGrid> output = PeanoConverter::combineImageData(&readers);
+        this->GetExecutive()->SetOutputData(i, output);
+        std::cout << "Output grid set!\n";
+
+        for(PeanoReader* reader: readers) {
+            std::cout << "Deleting reader...\n";
+            delete reader;
+        }
+
+
+    }
   return 1;
+}
+
+
+int vtkPeanoReader::FillOutputPortInformation(int port, vtkInformation* info) {
+    info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkPeanoObject-" + std::to_string(port);
+    return 1;
 }
 
 //----------------------------------------------------------------------------

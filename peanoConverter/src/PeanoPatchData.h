@@ -12,12 +12,10 @@
 
 class PeanoPatchData {
 public:
-	PeanoPatchData(PeanoVariable variable, int cells);
+	PeanoPatchData(PeanoVariable* variable);
 	virtual ~PeanoPatchData();
+	PeanoVariable* structure;
 	double* values;
-	std::string variableName;
-	int unknowns;
-	int totalValues;
 };
 
 #endif /* PEANOPATCHDATA_H_ */

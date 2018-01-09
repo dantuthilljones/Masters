@@ -20,7 +20,7 @@ static const char* const PeanoReadervtkPeanoReaderInterfaces0 =
 "     <Documentation\n"
 "       short_help=\"Read a Dan file.\"\n"
 "       long_help=\"Read a Dan file.\">\n"
-"       The Dan reader reads Dan files, and the output is a Dan. The default file extension is .dan.\n"
+"       The Peano reader reads Peano data or metadata files.\n"
 "     </Documentation>\n"
 "     <StringVectorProperty\n"
 "        name=\"FileName\"\n"

@@ -105,33 +105,57 @@ CMakeFiles/PeanoVTK.dir/PeanoPatchData.cpp.o.provides: CMakeFiles/PeanoVTK.dir/P
 CMakeFiles/PeanoVTK.dir/PeanoPatchData.cpp.o.provides.build: CMakeFiles/PeanoVTK.dir/PeanoPatchData.cpp.o
 
 
-CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.o: CMakeFiles/PeanoVTK.dir/flags.make
-CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.o: /home/dan/Documents/Masters/peanoConverter/src/PeanoPatchReader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/peanoConverter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.o -c /home/dan/Documents/Masters/peanoConverter/src/PeanoPatchReader.cpp
+CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.o: CMakeFiles/PeanoVTK.dir/flags.make
+CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.o: /home/dan/Documents/Masters/peanoConverter/src/PeanoReader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/peanoConverter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.o -c /home/dan/Documents/Masters/peanoConverter/src/PeanoReader.cpp
 
-CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/Documents/Masters/peanoConverter/src/PeanoPatchReader.cpp > CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.i
+CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/Documents/Masters/peanoConverter/src/PeanoReader.cpp > CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.i
 
-CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/Documents/Masters/peanoConverter/src/PeanoPatchReader.cpp -o CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.s
+CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/Documents/Masters/peanoConverter/src/PeanoReader.cpp -o CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.s
 
-CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.o.requires:
+CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.o.requires:
 
-.PHONY : CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.o.requires
+.PHONY : CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.o.requires
 
-CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.o.provides: CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.o.requires
-	$(MAKE) -f CMakeFiles/PeanoVTK.dir/build.make CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.o.provides.build
-.PHONY : CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.o.provides
+CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.o.provides: CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.o.requires
+	$(MAKE) -f CMakeFiles/PeanoVTK.dir/build.make CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.o.provides.build
+.PHONY : CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.o.provides
 
-CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.o.provides.build: CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.o
+CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.o.provides.build: CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.o
+
+
+CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.o: CMakeFiles/PeanoVTK.dir/flags.make
+CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.o: /home/dan/Documents/Masters/peanoConverter/src/PeanoMetaReader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/peanoConverter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.o -c /home/dan/Documents/Masters/peanoConverter/src/PeanoMetaReader.cpp
+
+CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/Documents/Masters/peanoConverter/src/PeanoMetaReader.cpp > CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.i
+
+CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/Documents/Masters/peanoConverter/src/PeanoMetaReader.cpp -o CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.s
+
+CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.o.requires:
+
+.PHONY : CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.o.requires
+
+CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.o.provides: CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.o.requires
+	$(MAKE) -f CMakeFiles/PeanoVTK.dir/build.make CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.o.provides.build
+.PHONY : CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.o.provides
+
+CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.o.provides.build: CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.o
 
 
 CMakeFiles/PeanoVTK.dir/PeanoVariable.cpp.o: CMakeFiles/PeanoVTK.dir/flags.make
 CMakeFiles/PeanoVTK.dir/PeanoVariable.cpp.o: /home/dan/Documents/Masters/peanoConverter/src/PeanoVariable.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/peanoConverter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/PeanoVTK.dir/PeanoVariable.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/peanoConverter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/PeanoVTK.dir/PeanoVariable.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PeanoVTK.dir/PeanoVariable.cpp.o -c /home/dan/Documents/Masters/peanoConverter/src/PeanoVariable.cpp
 
 CMakeFiles/PeanoVTK.dir/PeanoVariable.cpp.i: cmake_force
@@ -155,7 +179,7 @@ CMakeFiles/PeanoVTK.dir/PeanoVariable.cpp.o.provides.build: CMakeFiles/PeanoVTK.
 
 CMakeFiles/PeanoVTK.dir/PeanoVTK.cpp.o: CMakeFiles/PeanoVTK.dir/flags.make
 CMakeFiles/PeanoVTK.dir/PeanoVTK.cpp.o: /home/dan/Documents/Masters/peanoConverter/src/PeanoVTK.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/peanoConverter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/PeanoVTK.dir/PeanoVTK.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/peanoConverter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/PeanoVTK.dir/PeanoVTK.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PeanoVTK.dir/PeanoVTK.cpp.o -c /home/dan/Documents/Masters/peanoConverter/src/PeanoVTK.cpp
 
 CMakeFiles/PeanoVTK.dir/PeanoVTK.cpp.i: cmake_force
@@ -179,7 +203,7 @@ CMakeFiles/PeanoVTK.dir/PeanoVTK.cpp.o.provides.build: CMakeFiles/PeanoVTK.dir/P
 
 CMakeFiles/PeanoVTK.dir/PeanoConverter.cpp.o: CMakeFiles/PeanoVTK.dir/flags.make
 CMakeFiles/PeanoVTK.dir/PeanoConverter.cpp.o: /home/dan/Documents/Masters/peanoConverter/src/PeanoConverter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/peanoConverter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/PeanoVTK.dir/PeanoConverter.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/peanoConverter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/PeanoVTK.dir/PeanoConverter.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PeanoVTK.dir/PeanoConverter.cpp.o -c /home/dan/Documents/Masters/peanoConverter/src/PeanoConverter.cpp
 
 CMakeFiles/PeanoVTK.dir/PeanoConverter.cpp.i: cmake_force
@@ -205,7 +229,8 @@ CMakeFiles/PeanoVTK.dir/PeanoConverter.cpp.o.provides.build: CMakeFiles/PeanoVTK
 PeanoVTK_OBJECTS = \
 "CMakeFiles/PeanoVTK.dir/PeanoPatch.cpp.o" \
 "CMakeFiles/PeanoVTK.dir/PeanoPatchData.cpp.o" \
-"CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.o" \
+"CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.o" \
+"CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.o" \
 "CMakeFiles/PeanoVTK.dir/PeanoVariable.cpp.o" \
 "CMakeFiles/PeanoVTK.dir/PeanoVTK.cpp.o" \
 "CMakeFiles/PeanoVTK.dir/PeanoConverter.cpp.o"
@@ -215,7 +240,8 @@ PeanoVTK_EXTERNAL_OBJECTS =
 
 PeanoVTK: CMakeFiles/PeanoVTK.dir/PeanoPatch.cpp.o
 PeanoVTK: CMakeFiles/PeanoVTK.dir/PeanoPatchData.cpp.o
-PeanoVTK: CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.o
+PeanoVTK: CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.o
+PeanoVTK: CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.o
 PeanoVTK: CMakeFiles/PeanoVTK.dir/PeanoVariable.cpp.o
 PeanoVTK: CMakeFiles/PeanoVTK.dir/PeanoVTK.cpp.o
 PeanoVTK: CMakeFiles/PeanoVTK.dir/PeanoConverter.cpp.o
@@ -257,7 +283,7 @@ PeanoVTK: /usr/local/lib/libvtksys-8.0.so.1
 PeanoVTK: /usr/local/lib/libvtklz4-8.0.so.1
 PeanoVTK: /usr/local/lib/libvtkzlib-8.0.so.1
 PeanoVTK: CMakeFiles/PeanoVTK.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dan/Documents/Masters/peanoConverter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable PeanoVTK"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dan/Documents/Masters/peanoConverter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable PeanoVTK"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PeanoVTK.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -267,7 +293,8 @@ CMakeFiles/PeanoVTK.dir/build: PeanoVTK
 
 CMakeFiles/PeanoVTK.dir/requires: CMakeFiles/PeanoVTK.dir/PeanoPatch.cpp.o.requires
 CMakeFiles/PeanoVTK.dir/requires: CMakeFiles/PeanoVTK.dir/PeanoPatchData.cpp.o.requires
-CMakeFiles/PeanoVTK.dir/requires: CMakeFiles/PeanoVTK.dir/PeanoPatchReader.cpp.o.requires
+CMakeFiles/PeanoVTK.dir/requires: CMakeFiles/PeanoVTK.dir/PeanoReader.cpp.o.requires
+CMakeFiles/PeanoVTK.dir/requires: CMakeFiles/PeanoVTK.dir/PeanoMetaReader.cpp.o.requires
 CMakeFiles/PeanoVTK.dir/requires: CMakeFiles/PeanoVTK.dir/PeanoVariable.cpp.o.requires
 CMakeFiles/PeanoVTK.dir/requires: CMakeFiles/PeanoVTK.dir/PeanoVTK.cpp.o.requires
 CMakeFiles/PeanoVTK.dir/requires: CMakeFiles/PeanoVTK.dir/PeanoConverter.cpp.o.requires

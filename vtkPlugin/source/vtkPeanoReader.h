@@ -1,9 +1,9 @@
 #ifndef vtkDanReader_h
 #define vtkDanReader_h
 
-#include <vtkStructuredGridAlgorithm.h>
+#include <vtkAlgorithm.h>
 
-class vtkPeanoReader : public vtkStructuredGridAlgorithm {
+class vtkPeanoReader : public vtkAlgorithm {
 public:
   vtkTypeMacro(vtkPeanoReader, vtkStructuredGridAlgorithm);
   void PrintSelf(ostream& os, vtkIndent indent);

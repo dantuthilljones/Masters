@@ -6,14 +6,14 @@
  */
 
 #include "PeanoPatchData.h"
+#include "PeanoVariable.h"
 
-PeanoPatchData::PeanoPatchData(PeanoVariable variable, int cells) {
-	variableName = variable.variableName;
-	unknowns = variable.unknowns;
-	totalValues = cells*unknowns;
-	values = (double*) malloc(sizeof(double) * totalValues);
+PeanoPatchData::PeanoPatchData(PeanoVariable* variable) {
+	structure = variable;
+	values = new double[structure->totalValues];
+
 }
 
 PeanoPatchData::~PeanoPatchData() {
-	delete values;
+	delete [] values;
 }

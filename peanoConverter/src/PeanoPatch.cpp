@@ -12,33 +12,30 @@
 #include <string>
 #include <iostream>
 #include <unordered_map>
+#include <vector>
 
-#include "boost/algorithm/string/predicate.hpp"
 #include "boost/lexical_cast.hpp"
+#include "boost/algorithm/string/predicate.hpp"
 #include "boost/algorithm/string/split.hpp"
 #include "boost/algorithm/string/classification.hpp"
 #include "boost/algorithm/string/trim.hpp"
 
-PeanoPatch::PeanoPatch(std::vector<std::string>& text, int dimensions, int* patchSize, std::vector<PeanoVariable>& variables) {
+PeanoPatch::PeanoPatch(std::vector<std::string> &text, int dimensions, std::vector<int> &patchSize, std::vector<PeanoVariable*> &variables) {
 	//std::cout << "Starting PeanoPatch\n";
 	this->dimensions = dimensions;
 	this->patchSize = patchSize;
-	offsets = nullptr;
-	sizes = nullptr;
 
 	//calculate the number of cells in the patch
-	cells = 1;
+	int cells = 1;
 	for(int i = 0; i < dimensions; i++) {
 		cells *= patchSize[i];
 	}
 
 	//initialize the data objects for each variable
-	for(int i = 0; i < variables.size(); i++) {
-		PeanoPatchData* data = new PeanoPatchData(variables[i], cells);
-		patchData[data->variableName] = data;
+	for(uint i = 0; i < variables.size(); i++) {
+		PeanoPatchData* data = new PeanoPatchData(variables[i]);
+		patchData[data->structure->name] = data;
 	}
-
-
 
 	//std::cout << "text size: " << text.size() << "\n";
 
@@ -54,7 +51,7 @@ PeanoPatch::PeanoPatch(std::vector<std::string>& text, int dimensions, int* patc
 			boost::split(split, line, boost::is_any_of(" "));
 
 			//create an array to hold the number  of offsets
-			offsets = (double*) malloc(sizeof(double)*dimensions);
+			offsets = new double[dimensions];
 			for(int j = 0; j < dimensions; j++) {
 				offsets[j] = std::stod(split[j+1]);//the 0th element of split is "offset" so skip it
 			}
@@ -64,11 +61,11 @@ PeanoPatch::PeanoPatch(std::vector<std::string>& text, int dimensions, int* patc
 			boost::split(split, line, boost::is_any_of(" "));
 
 			//create an array to hold the number  of offsets
-			sizes = (double*) malloc(sizeof(double)*dimensions);
+			sizes = new double[dimensions];
 			for(int j = 0; j < dimensions; j++) {
 				sizes[j] = std::stod(split[j+1]);//the 0th element of split is "offset" so skip it
 			}
-		} else if(boost::starts_with(line,"begin cell-values")) {
+		} else if(boost::starts_with(line,"begin cell-values") || boost::starts_with(line,"begin vertex-values")) {
 
 			//get the variable we are looking for
 			std::vector<std::string> split;
@@ -88,36 +85,33 @@ PeanoPatch::PeanoPatch(std::vector<std::string>& text, int dimensions, int* patc
 			boost::split(splitValues, vals, boost::is_any_of(" "));
 
 			//convert the strings to doubles and add to the array
-			for(int j = 0; j < data->totalValues; j++) {
+			for(int j = 0; j < data->structure->totalValues; j++) {
 				data->values[j] = std::stod(splitValues[j]);
 			}
 		}
 	}
+}
 
-//	std::cout << "Read Patch:\n";
-//	std::cout << " Dimensions = " << dimensions << "\n";
-//	std::cout << " Offsets =";
-//	for(int i = 0; i < dimensions; i++) {
-//		std::cout << " " << offsets[i];
-//	}
-//	std::cout << "\n Sizes =";
-//	for(int i = 0; i < dimensions; i++) {
-//		std::cout << " " << sizes[i];
-//	}
-//
-//	for(auto kv :patchData) {
-//		std::cout << "\n " << kv.second->variableName << ": ";
-//		for(int i = 0; i < kv.second->totalValues; i++) {
-//			std::cout << kv.second->values[i] << " ";
-//		}
-//	}
-//
-//	std::cout << "\n\n";
+PeanoVariable* PeanoPatch::getStructure() {
+	for (auto it : this->patchData) {
+		return it.second->structure;
+	}
+	return nullptr;
+}
 
+bool PeanoPatch::hasMappings(){
+	for (auto it : this->patchData) {
+		return it.second->structure->mappings != -1;
+	}
+	return false;
 }
 
 
 PeanoPatch::~PeanoPatch() {
-	delete offsets;
-	delete sizes;
+	delete [] offsets;
+	delete [] sizes;
+	for (auto it : patchData) {
+		delete it.second;
+	}
 }
+

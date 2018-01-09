@@ -6,7 +6,7 @@
      <Documentation
        short_help="Read a Dan file."
        long_help="Read a Dan file.">
-       The Dan reader reads Dan files, and the output is a Dan. The default file extension is .dan.
+       The Peano reader reads Peano data or metadata files.
      </Documentation>
      <StringVectorProperty
         name="FileName"
