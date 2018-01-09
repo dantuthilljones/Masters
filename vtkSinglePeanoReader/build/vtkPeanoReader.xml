@@ -1,0 +1,44 @@
+<xml>
+    <proxy>
+        <group>sources</group>
+        <name>PeanoReader</name>
+        <label>Peano reader</label>
+        <documentation>
+            <brief>Read a single Peano file.</brief>
+            <long>
+       The Peano reader reads Peano data file.
+     </long>
+        </documentation>
+        <property>
+            <name>FileName</name>
+            <label>FileName</label>
+            <documentation>
+                <brief/>
+                <long>
+          This property specifies the file name for the Peano reader.
+        </long>
+            </documentation>
+            <defaults/>
+            <domains>
+                <domain>
+                    <text> The value(s) must be a filename (or filenames).</text>
+                </domain>
+            </domains>
+        </property>
+        <property>
+            <name>TimestepValues</name>
+            <label>TimestepValues</label>
+            <documentation>
+                <brief/>
+                <long>Available timestep values.</long>
+            </documentation>
+            <defaults/>
+            <domains/>
+        </property>
+        <ReaderFactory extensions="peano-patch-file" file_description="Peano Patch File Format"/>
+    </proxy>
+    <categoryindex>
+        <label>Readers</label>
+        <item proxy_name="PeanoReader" proxy_group="sources"/>
+    </categoryindex>
+</xml>

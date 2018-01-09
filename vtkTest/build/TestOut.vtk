@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <UnstructuredGrid>
+    <Piece NumberOfPoints="27"                   NumberOfCells="8"                   >
+      <PointData>
+        <DataArray type="Float64" Name="PointData" format="appended" RangeMin="0"                    RangeMax="26"                   offset="0"                   />
+      </PointData>
+      <CellData>
+        <DataArray type="Float64" Name="CellData" format="appended" RangeMin="0"                    RangeMax="7"                    offset="120"                 />
+      </CellData>
+      <Points>
+        <DataArray type="Float32" Name="Points" NumberOfComponents="3" format="appended" RangeMin="0"                    RangeMax="3.4641016151"         offset="184"                 />
+      </Points>
+      <Cells>
+        <DataArray type="Int64" Name="connectivity" format="appended" RangeMin=""                     RangeMax=""                     offset="296"                 />
+        <DataArray type="Int64" Name="offsets" format="appended" RangeMin=""                     RangeMax=""                     offset="448"                 />
+        <DataArray type="UInt8" Name="types" format="appended" RangeMin=""                     RangeMax=""                     offset="512"                 />
+      </Cells>
+    </Piece>
+  </UnstructuredGrid>
+  <AppendedData encoding="base64">
+   _AQAAAACAAADYAAAARwAAAA==eJxNxjkOQFAAQEGlUqFQKERERETsW+Pf/zSOoDCF18yLon/PbcJHzIQpM+YsWLJizYYtO/YcOHLizIUrN+48ePIKL3XRC08=AQAAAACAAABAAAAAHgAAAA==eJxjYEAGH+yhDAcIxQGlBaC0CJSWgNIyDgBf7wMQAQAAAACAAABEAQAAQgAAAA==eJxjYMAGGuyROA6YYiA2jA+mHVDVwthwPQ5ofAZU/cjq0M1Gx3BzkN3lgCoPx9j8gOxWBxx2O+AwywGbHACaqhrmAQAAAACAAAAAAgAAYAAAAA==eJyNzzkOgDAMRNGwhx3Czv0PSsF3Y8mS07xmNPGE8L8WM+ywwAFLHI18jr2Rr3By9tc4Y4OLs1/nI64ou5Pasam7DvXPaeRl927k5a7L2S+7b7XjcfbrvOx+8QOXngNBAQAAAACAAABAAAAAHgAAAA==eJzjYIAAASgtAaUVoLQGlDaA0hZQ2gFKAwAeQAEhAQAAAACAAAAIAAAACwAAAA==eJzj5oYAAAGUAFk=
+  </AppendedData>
+</VTKFile>
