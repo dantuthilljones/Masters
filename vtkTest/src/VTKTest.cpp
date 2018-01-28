@@ -24,6 +24,8 @@ int xyz(int x, int y, int z) {
 
 int main(int argc, char* argv[]) {
 
+	std::cout << "Test update!";
+
 
 	vtkSmartPointer<vtkPoints> points = vtkSmartPointer<vtkPoints>::New();
 	points->SetNumberOfPoints(3*3*3);

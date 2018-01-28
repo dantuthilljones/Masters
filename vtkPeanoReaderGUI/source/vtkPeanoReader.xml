@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ServerManagerConfiguration>
+  <ProxyGroup name="sources">
+    <SourceProxy
+        name="PeanoReader"
+        class="vtkPeanoReader"
+        label="Peano reader">
+      <Documentation
+          short_help="Read a Peano file."
+          long_help="Read a single Peano file.">
+          The Peano reader reads Peano data file.
+      </Documentation>
+      <StringVectorProperty
+          name="FileName"
+          animateable="0"
+          command="SetFileName"
+          number_of_elements="1">
+        <FileListDomain name="files"/>
+        <Documentation>
+            This property specifies the file name for the Peano reader.
+        </Documentation>
+      </StringVectorProperty>
+      <DoubleVectorProperty
+          information_only="1"
+          name="TimestepValues"
+          repeatable="1">
+        <TimeStepsInformationHelper />
+        <Documentation>
+            Available timestep values.
+        </Documentation>
+      </DoubleVectorProperty>
+      <IntVectorProperty
+          name="Preview"
+          command="SetPreview"
+          number_of_elements="1"
+          default_values="0">
+        <BooleanDomain name="bool"/>
+        <Documentation>
+          If selected, the input grid will be sampled on to a regular grid
+          of the selected sizes.
+        </Documentation>
+      </IntVectorProperty>
+      <IntVectorProperty
+          command="SetPreviewSize"
+          default_values="10 10 10"
+          name="PreviewSize"
+          number_of_elements="3">
+        <IntRangeDomain name="range"/>
+        <Documentation>
+          If the preview option is selected, then this option sets the size
+          of the grid that we sample the input data on to.
+        </Documentation>
+      </IntVectorProperty>
+      <Hints>
+        <ReaderFactory
+            extensions="peano-patch-file"
+            file_description="Peano Patch File Format" />
+      </Hints>
+    </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>

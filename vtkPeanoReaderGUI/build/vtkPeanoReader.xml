@@ -1,0 +1,80 @@
+<xml>
+    <proxy>
+        <group>sources</group>
+        <name>PeanoReader</name>
+        <label>Peano reader</label>
+        <documentation>
+            <brief>Read a single Peano file.</brief>
+            <long>
+          The Peano reader reads Peano data file.
+      </long>
+        </documentation>
+        <property>
+            <name>FileName</name>
+            <label>FileName</label>
+            <documentation>
+                <brief/>
+                <long>
+            This property specifies the file name for the Peano reader.
+        </long>
+            </documentation>
+            <defaults/>
+            <domains>
+                <domain>
+                    <text> The value(s) must be a filename (or filenames).</text>
+                </domain>
+            </domains>
+        </property>
+        <property>
+            <name>TimestepValues</name>
+            <label>TimestepValues</label>
+            <documentation>
+                <brief/>
+                <long>
+            Available timestep values.
+        </long>
+            </documentation>
+            <defaults/>
+            <domains/>
+        </property>
+        <property>
+            <name>Preview</name>
+            <label>Preview</label>
+            <documentation>
+                <brief/>
+                <long>
+          If selected, the input grid will be sampled on to a regular grid
+          of the selected sizes.
+        </long>
+            </documentation>
+            <defaults>0</defaults>
+            <domains>
+                <domain>
+                    <text>Accepts boolean values (0 or 1).</text>
+                </domain>
+            </domains>
+        </property>
+        <property>
+            <name>PreviewSize</name>
+            <label>PreviewSize</label>
+            <documentation>
+                <brief/>
+                <long>
+          If the preview option is selected, then this option sets the size
+          of the grid that we sample the input data on to.
+        </long>
+            </documentation>
+            <defaults>10 10 10</defaults>
+            <domains>
+  Value(s) must be in the range (
+    ,
+    ).
+</domains>
+        </property>
+        <ReaderFactory extensions="peano-patch-file" file_description="Peano Patch File Format"/>
+    </proxy>
+    <categoryindex>
+        <label>Readers</label>
+        <item proxy_name="PeanoReader" proxy_group="sources"/>
+    </categoryindex>
+</xml>

@@ -1,0 +1,59 @@
+
+==Peano reader==
+
+Read a single Peano file.
+The Peano reader reads Peano data file.
+
+
+{| class="PropertiesTable" border="1" cellpadding="5"
+|-
+| '''Property'''
+| '''Description'''
+| '''Default Value(s)'''
+| '''Restrictions'''
+
+|-
+|'''FileName''' (FileName)
+|
+
+This property specifies the file name for the Peano reader.
+
+|
+
+|
+The value(s) must be a filename (or filenames).
+|-
+|'''TimestepValues''' (TimestepValues)
+|
+
+Available timestep values.
+
+|
+
+|
+
+|-
+|'''Preview''' (Preview)
+|
+
+If selected, the input grid will be sampled on to a regular grid
+of the selected sizes.
+
+|
+0
+|
+Accepts boolean values (0 or 1).
+|-
+|'''PreviewSize''' (PreviewSize)
+|
+
+If the preview option is selected, then this option sets the size
+of the grid that we sample the input data on to.
+
+|
+10 10 10
+|
+
+
+|}
+
