@@ -44,9 +44,10 @@ if(Boost_FOUND)
         PeanoPatch.cpp
         PeanoPatchData.cpp
         PeanoReader.cpp
-        PeanoMetaReader.cpp
+        PeanoMetaFile.cpp
         PeanoVariable.cpp
         PeanoVTK.cpp
+        PeanoDataSet.cpp
         PeanoConverter.cpp)
 
     target_link_libraries(PeanoSubSampler

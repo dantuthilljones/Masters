@@ -5,7 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoConverter.cpp" "/home/dan/Documents/Masters/PeanoSubSampler2/bin/CMakeFiles/PeanoSubSampler.dir/PeanoConverter.cpp.o"
-  "/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaReader.cpp" "/home/dan/Documents/Masters/PeanoSubSampler2/bin/CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.o"
+  "/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoDataSet.cpp" "/home/dan/Documents/Masters/PeanoSubSampler2/bin/CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.o"
+  "/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaFile.cpp" "/home/dan/Documents/Masters/PeanoSubSampler2/bin/CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.o"
   "/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoPatch.cpp" "/home/dan/Documents/Masters/PeanoSubSampler2/bin/CMakeFiles/PeanoSubSampler.dir/PeanoPatch.cpp.o"
   "/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoPatchData.cpp" "/home/dan/Documents/Masters/PeanoSubSampler2/bin/CMakeFiles/PeanoSubSampler.dir/PeanoPatchData.cpp.o"
   "/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoReader.cpp" "/home/dan/Documents/Masters/PeanoSubSampler2/bin/CMakeFiles/PeanoSubSampler.dir/PeanoReader.cpp.o"

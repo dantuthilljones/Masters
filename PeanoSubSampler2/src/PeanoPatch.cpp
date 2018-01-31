@@ -102,7 +102,7 @@ PeanoPatch::PeanoPatch(std::vector<std::string> &text, int dimensions, int* patc
 }
 
 bool PeanoPatch::saveToFile(std::string filename) {
-	std::cout << "\n saving patch to file " << filename << "\n";
+	std::cout << "\nSaving patch to file " << filename << "\n";
 	std::ofstream file;
 	file.open(filename.c_str(), std::ofstream::out | std::ofstream::trunc);
 

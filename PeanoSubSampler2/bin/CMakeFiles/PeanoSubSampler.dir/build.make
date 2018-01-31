@@ -129,28 +129,28 @@ CMakeFiles/PeanoSubSampler.dir/PeanoReader.cpp.o.provides: CMakeFiles/PeanoSubSa
 CMakeFiles/PeanoSubSampler.dir/PeanoReader.cpp.o.provides.build: CMakeFiles/PeanoSubSampler.dir/PeanoReader.cpp.o
 
 
-CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.o: CMakeFiles/PeanoSubSampler.dir/flags.make
-CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.o: /home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaReader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/PeanoSubSampler2/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.o -c /home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaReader.cpp
+CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.o: CMakeFiles/PeanoSubSampler.dir/flags.make
+CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.o: /home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaFile.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/PeanoSubSampler2/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.o -c /home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaFile.cpp
 
-CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaReader.cpp > CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.i
+CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaFile.cpp > CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.i
 
-CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaReader.cpp -o CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.s
+CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaFile.cpp -o CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.s
 
-CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.o.requires:
+CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.o.requires:
 
-.PHONY : CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.o.requires
+.PHONY : CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.o.requires
 
-CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.o.provides: CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.o.requires
-	$(MAKE) -f CMakeFiles/PeanoSubSampler.dir/build.make CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.o.provides.build
-.PHONY : CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.o.provides
+CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.o.provides: CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.o.requires
+	$(MAKE) -f CMakeFiles/PeanoSubSampler.dir/build.make CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.o.provides.build
+.PHONY : CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.o.provides
 
-CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.o.provides.build: CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.o
+CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.o.provides.build: CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.o
 
 
 CMakeFiles/PeanoSubSampler.dir/PeanoVariable.cpp.o: CMakeFiles/PeanoSubSampler.dir/flags.make
@@ -201,9 +201,33 @@ CMakeFiles/PeanoSubSampler.dir/PeanoVTK.cpp.o.provides: CMakeFiles/PeanoSubSampl
 CMakeFiles/PeanoSubSampler.dir/PeanoVTK.cpp.o.provides.build: CMakeFiles/PeanoSubSampler.dir/PeanoVTK.cpp.o
 
 
+CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.o: CMakeFiles/PeanoSubSampler.dir/flags.make
+CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.o: /home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoDataSet.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/PeanoSubSampler2/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.o -c /home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoDataSet.cpp
+
+CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoDataSet.cpp > CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.i
+
+CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoDataSet.cpp -o CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.s
+
+CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.o.requires:
+
+.PHONY : CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.o.requires
+
+CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.o.provides: CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.o.requires
+	$(MAKE) -f CMakeFiles/PeanoSubSampler.dir/build.make CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.o.provides.build
+.PHONY : CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.o.provides
+
+CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.o.provides.build: CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.o
+
+
 CMakeFiles/PeanoSubSampler.dir/PeanoConverter.cpp.o: CMakeFiles/PeanoSubSampler.dir/flags.make
 CMakeFiles/PeanoSubSampler.dir/PeanoConverter.cpp.o: /home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoConverter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/PeanoSubSampler2/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/PeanoSubSampler.dir/PeanoConverter.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/PeanoSubSampler2/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/PeanoSubSampler.dir/PeanoConverter.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PeanoSubSampler.dir/PeanoConverter.cpp.o -c /home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoConverter.cpp
 
 CMakeFiles/PeanoSubSampler.dir/PeanoConverter.cpp.i: cmake_force
@@ -230,9 +254,10 @@ PeanoSubSampler_OBJECTS = \
 "CMakeFiles/PeanoSubSampler.dir/PeanoPatch.cpp.o" \
 "CMakeFiles/PeanoSubSampler.dir/PeanoPatchData.cpp.o" \
 "CMakeFiles/PeanoSubSampler.dir/PeanoReader.cpp.o" \
-"CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.o" \
+"CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.o" \
 "CMakeFiles/PeanoSubSampler.dir/PeanoVariable.cpp.o" \
 "CMakeFiles/PeanoSubSampler.dir/PeanoVTK.cpp.o" \
+"CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.o" \
 "CMakeFiles/PeanoSubSampler.dir/PeanoConverter.cpp.o"
 
 # External object files for target PeanoSubSampler
@@ -241,9 +266,10 @@ PeanoSubSampler_EXTERNAL_OBJECTS =
 PeanoSubSampler: CMakeFiles/PeanoSubSampler.dir/PeanoPatch.cpp.o
 PeanoSubSampler: CMakeFiles/PeanoSubSampler.dir/PeanoPatchData.cpp.o
 PeanoSubSampler: CMakeFiles/PeanoSubSampler.dir/PeanoReader.cpp.o
-PeanoSubSampler: CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.o
+PeanoSubSampler: CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.o
 PeanoSubSampler: CMakeFiles/PeanoSubSampler.dir/PeanoVariable.cpp.o
 PeanoSubSampler: CMakeFiles/PeanoSubSampler.dir/PeanoVTK.cpp.o
+PeanoSubSampler: CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.o
 PeanoSubSampler: CMakeFiles/PeanoSubSampler.dir/PeanoConverter.cpp.o
 PeanoSubSampler: CMakeFiles/PeanoSubSampler.dir/build.make
 PeanoSubSampler: /usr/local/lib/libvtkInteractionStyle-8.0.so.1
@@ -283,7 +309,7 @@ PeanoSubSampler: /usr/local/lib/libvtksys-8.0.so.1
 PeanoSubSampler: /usr/local/lib/libvtklz4-8.0.so.1
 PeanoSubSampler: /usr/local/lib/libvtkzlib-8.0.so.1
 PeanoSubSampler: CMakeFiles/PeanoSubSampler.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dan/Documents/Masters/PeanoSubSampler2/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable PeanoSubSampler"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dan/Documents/Masters/PeanoSubSampler2/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable PeanoSubSampler"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PeanoSubSampler.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -294,9 +320,10 @@ CMakeFiles/PeanoSubSampler.dir/build: PeanoSubSampler
 CMakeFiles/PeanoSubSampler.dir/requires: CMakeFiles/PeanoSubSampler.dir/PeanoPatch.cpp.o.requires
 CMakeFiles/PeanoSubSampler.dir/requires: CMakeFiles/PeanoSubSampler.dir/PeanoPatchData.cpp.o.requires
 CMakeFiles/PeanoSubSampler.dir/requires: CMakeFiles/PeanoSubSampler.dir/PeanoReader.cpp.o.requires
-CMakeFiles/PeanoSubSampler.dir/requires: CMakeFiles/PeanoSubSampler.dir/PeanoMetaReader.cpp.o.requires
+CMakeFiles/PeanoSubSampler.dir/requires: CMakeFiles/PeanoSubSampler.dir/PeanoMetaFile.cpp.o.requires
 CMakeFiles/PeanoSubSampler.dir/requires: CMakeFiles/PeanoSubSampler.dir/PeanoVariable.cpp.o.requires
 CMakeFiles/PeanoSubSampler.dir/requires: CMakeFiles/PeanoSubSampler.dir/PeanoVTK.cpp.o.requires
+CMakeFiles/PeanoSubSampler.dir/requires: CMakeFiles/PeanoSubSampler.dir/PeanoDataSet.cpp.o.requires
 CMakeFiles/PeanoSubSampler.dir/requires: CMakeFiles/PeanoSubSampler.dir/PeanoConverter.cpp.o.requires
 
 .PHONY : CMakeFiles/PeanoSubSampler.dir/requires

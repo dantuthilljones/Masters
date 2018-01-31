@@ -157,9 +157,9 @@
 			<location>/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoReader.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] PeanoSubSampler/Source Files/PeanoMetaReader.cpp</name>
+			<name>[Targets]/[exe] PeanoSubSampler/Source Files/PeanoMetaFile.cpp</name>
 			<type>1</type>
-			<location>/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaReader.cpp</location>
+			<location>/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaFile.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[exe] PeanoSubSampler/Source Files/PeanoVariable.cpp</name>
@@ -170,6 +170,11 @@
 			<name>[Targets]/[exe] PeanoSubSampler/Source Files/PeanoVTK.cpp</name>
 			<type>1</type>
 			<location>/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoVTK.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] PeanoSubSampler/Source Files/PeanoDataSet.cpp</name>
+			<type>1</type>
+			<location>/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoDataSet.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[exe] PeanoSubSampler/Source Files/PeanoConverter.cpp</name>

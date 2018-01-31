@@ -27,7 +27,7 @@
 #include "vtkVoxel.h"
 
 
-vtkSmartPointer<vtkImageData> PeanoConverter::toImageData(PeanoPatch* patch) {
+vtkSmartPointer<vtkImageData> PeanoConverter::toImageData(PeanoPatch *patch) {
 	vtkSmartPointer<vtkImageData> imageData = vtkSmartPointer<vtkImageData>::New();
 
 
@@ -67,7 +67,7 @@ vtkSmartPointer<vtkImageData> PeanoConverter::toImageData(PeanoPatch* patch) {
 	return imageData;
 }
 
-vtkSmartPointer<vtkUnstructuredGrid> PeanoConverter::toUnstructuredGrid(PeanoPatch* patch) {
+vtkSmartPointer<vtkUnstructuredGrid> PeanoConverter::toUnstructuredGrid(PeanoPatch *patch) {
 
 	vtkSmartPointer<vtkPoints> points = vtkSmartPointer<vtkPoints>::New();
 
@@ -173,7 +173,7 @@ vtkSmartPointer<vtkUnstructuredGrid> PeanoConverter::combineImageData(std::vecto
 	return combined;
 }
 
-vtkSmartPointer<vtkUnstructuredGrid> PeanoConverter::combineImageData(std::vector<PeanoReader*>* readers) {
+vtkSmartPointer<vtkUnstructuredGrid> PeanoConverter::combineImageData(std::vector<PeanoReader*> *readers) {
 	vtkSmartPointer<vtkAppendFilter> appendFilter = vtkSmartPointer<vtkAppendFilter>::New();
 
 	for(uint i = 0; i < readers->size(); i++) {
@@ -195,7 +195,7 @@ vtkSmartPointer<vtkUnstructuredGrid> PeanoConverter::combineImageData(std::vecto
 	return combined;
 }
 
-PeanoPatch* PeanoConverter::subSample(std::vector<PeanoReader*>* readers, int x, int y, int z) {
+PeanoPatch* PeanoConverter::subSample(std::vector<PeanoReader*> &readers, int x, int y, int z) {
 	std::vector<PeanoPatch*> patches;
 
 	double xMax, yMax, zMax, xMin, yMin, zMin;
@@ -203,9 +203,9 @@ PeanoPatch* PeanoConverter::subSample(std::vector<PeanoReader*>* readers, int x,
 	xMin = yMin = zMin = std::numeric_limits<double>::max();
 
 	//calculate the minimum & maximum sizes and add all the patches to the patches vector
-	for(uint i = 0; i < readers->size(); i++) {
+	for(uint i = 0; i < readers.size(); i++) {
 		//add all the reader's patches to the patch vector
-		std::vector<PeanoPatch*> currentPatches = readers->at(i)->patches;
+		std::vector<PeanoPatch*> currentPatches = readers[i]->patches;
 		for(uint j = 0; j < currentPatches.size(); j++) {
 			PeanoPatch* patch = currentPatches[j];
 			patches.push_back(patch);
@@ -287,7 +287,7 @@ PeanoPatch* PeanoConverter::subSample(std::vector<PeanoReader*>* readers, int x,
 			int y = 0;
 			int z = 0;
 
-			std::cout << "total values = " << oldVar->totalValues << "\n";
+			//std::cout << "total values = " << oldVar->totalValues << "\n";
 
 			if(newData->structure->type == Cell_Values) {
 				for(int j = 0; j < oldVar->totalValues; j+= oldVar->unknowns) {
@@ -297,6 +297,8 @@ PeanoPatch* PeanoConverter::subSample(std::vector<PeanoReader*>* readers, int x,
 					int xCell = (position[0] - offsets[0])*resolution[0]/sizes[0];
 					int yCell = (position[1] - offsets[1])*resolution[1]/sizes[1];
 					int zCell = (position[2] - offsets[2])*resolution[2]/sizes[2];
+
+					delete position;
 
 					int index = outPatch->getIndexCellData(xCell, yCell, zCell);
 					newData->setData(index, data +j);
@@ -322,6 +324,7 @@ PeanoPatch* PeanoConverter::subSample(std::vector<PeanoReader*>* readers, int x,
 					int yVert = ((position[1] - offsets[1])*resolution[1]/sizes[1])+0.5;
 					int zVert = ((position[2] - offsets[2])*resolution[2]/sizes[2])+0.5;
 
+					delete position;
 
 					int index = outPatch->getIndexVertexData(xVert, yVert, zVert);
 					newData->setData(index, data +j);
@@ -341,7 +344,5 @@ PeanoPatch* PeanoConverter::subSample(std::vector<PeanoReader*>* readers, int x,
 			}
 		}
 	}
-
-
 	return outPatch;
 }

@@ -56,9 +56,31 @@ vtkSmartPointer.h
 vtkUnstructuredGrid.h
 /home/dan/Documents/Masters/PeanoSubSampler2/src/vtkUnstructuredGrid.h
 
-/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaReader.cpp
-PeanoMetaReader.h
-/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaReader.h
+/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoDataSet.cpp
+PeanoDataSet.h
+/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoDataSet.h
+PeanoConverter.h
+/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoConverter.h
+boost/algorithm/string/predicate.hpp
+/home/dan/Documents/Masters/PeanoSubSampler2/src/boost/algorithm/string/predicate.hpp
+boost/algorithm/string/erase.hpp
+/home/dan/Documents/Masters/PeanoSubSampler2/src/boost/algorithm/string/erase.hpp
+boost/algorithm/string/split.hpp
+/home/dan/Documents/Masters/PeanoSubSampler2/src/boost/algorithm/string/split.hpp
+boost/algorithm/string/replace.hpp
+/home/dan/Documents/Masters/PeanoSubSampler2/src/boost/algorithm/string/replace.hpp
+
+/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoDataSet.h
+PeanoPatch.h
+/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoPatch.h
+PeanoReader.h
+/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoReader.h
+string
+-
+
+/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaFile.cpp
+PeanoMetaFile.h
+/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaFile.h
 boost/algorithm/string/predicate.hpp
 /home/dan/Documents/Masters/PeanoSubSampler2/src/boost/algorithm/string/predicate.hpp
 boost/algorithm/string/erase.hpp
@@ -74,11 +96,15 @@ iostream
 fstream
 -
 
-/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaReader.h
+/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaFile.h
 string
 -
 vector
 -
+PeanoDataSet.h
+/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoDataSet.h
+PeanoReader.h
+/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoReader.h
 
 /home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoPatch.cpp
 PeanoPatch.h
@@ -197,10 +223,8 @@ PeanoReader.h
 /home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoReader.h
 PeanoConverter.h
 /home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoConverter.h
-PeanoMetaReader.h
-/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaReader.h
-vtkUnstructuredGrid.h
-/home/dan/Documents/Masters/PeanoSubSampler2/src/vtkUnstructuredGrid.h
+PeanoMetaFile.h
+/home/dan/Documents/Masters/PeanoSubSampler2/src/PeanoMetaFile.h
 vtkSmartPointer.h
 /home/dan/Documents/Masters/PeanoSubSampler2/src/vtkSmartPointer.h
 vtkXMLUnstructuredGridWriter.h
@@ -558,6 +582,28 @@ boost/algorithm/string/detail/predicate.hpp
 
 /home/dan/Documents/boost_1_65_1/boost/algorithm/string/predicate_facade.hpp
 boost/algorithm/string/config.hpp
+-
+
+/home/dan/Documents/boost_1_65_1/boost/algorithm/string/replace.hpp
+boost/algorithm/string/config.hpp
+-
+boost/range/iterator_range_core.hpp
+-
+boost/range/begin.hpp
+-
+boost/range/end.hpp
+-
+boost/range/iterator.hpp
+-
+boost/range/const_iterator.hpp
+-
+boost/algorithm/string/find_format.hpp
+-
+boost/algorithm/string/finder.hpp
+-
+boost/algorithm/string/formatter.hpp
+-
+boost/algorithm/string/compare.hpp
 -
 
 /home/dan/Documents/boost_1_65_1/boost/algorithm/string/sequence_traits.hpp
