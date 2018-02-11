@@ -38,38 +38,26 @@
             <domains/>
         </property>
         <property>
-            <name>Preview</name>
-            <label>Preview</label>
-            <documentation>
-                <brief/>
-                <long>
-          If selected, the input grid will be sampled on to a regular grid
-          of the selected sizes.
-        </long>
-            </documentation>
-            <defaults>0</defaults>
-            <domains>
-                <domain>
-                    <text>Accepts boolean values (0 or 1).</text>
-                </domain>
-            </domains>
+            <name>ResolutionInfo</name>
+            <label>ResolutionInfo</label>
+            <defaults/>
+            <domains/>
         </property>
         <property>
-            <name>PreviewSize</name>
-            <label>PreviewSize</label>
+            <name>Resolution</name>
+            <label>Resolution</label>
             <documentation>
                 <brief/>
-                <long>
-          If the preview option is selected, then this option sets the size
-          of the grid that we sample the input data on to.
-        </long>
+                <long>Load the grid with the given dimensions. Any arrays that
+        conform to these dimensions will be loaded.</long>
             </documentation>
-            <defaults>10 10 10</defaults>
+            <defaults/>
             <domains>
-  Value(s) must be in the range (
-    ,
-    ).
-</domains>
+                <domain>
+                    <text>The value(s) can be one of the following:</text>
+                    <list/>
+                </domain>
+            </domains>
         </property>
         <ReaderFactory extensions="peano-patch-file" file_description="Peano Patch File Format"/>
     </proxy>

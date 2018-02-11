@@ -150,32 +150,59 @@ PeanoConverter.cpp.s:
 	$(MAKE) -f CMakeFiles/PeanoReader.dir/build.make CMakeFiles/PeanoReader.dir/PeanoConverter.cpp.s
 .PHONY : PeanoConverter.cpp.s
 
-PeanoMetaReader.o: PeanoMetaReader.cpp.o
+PeanoDataSet.o: PeanoDataSet.cpp.o
 
-.PHONY : PeanoMetaReader.o
+.PHONY : PeanoDataSet.o
 
 # target to build an object file
-PeanoMetaReader.cpp.o:
-	$(MAKE) -f CMakeFiles/PeanoReader.dir/build.make CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.o
-.PHONY : PeanoMetaReader.cpp.o
+PeanoDataSet.cpp.o:
+	$(MAKE) -f CMakeFiles/PeanoReader.dir/build.make CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.o
+.PHONY : PeanoDataSet.cpp.o
 
-PeanoMetaReader.i: PeanoMetaReader.cpp.i
+PeanoDataSet.i: PeanoDataSet.cpp.i
 
-.PHONY : PeanoMetaReader.i
+.PHONY : PeanoDataSet.i
 
 # target to preprocess a source file
-PeanoMetaReader.cpp.i:
-	$(MAKE) -f CMakeFiles/PeanoReader.dir/build.make CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.i
-.PHONY : PeanoMetaReader.cpp.i
+PeanoDataSet.cpp.i:
+	$(MAKE) -f CMakeFiles/PeanoReader.dir/build.make CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.i
+.PHONY : PeanoDataSet.cpp.i
 
-PeanoMetaReader.s: PeanoMetaReader.cpp.s
+PeanoDataSet.s: PeanoDataSet.cpp.s
 
-.PHONY : PeanoMetaReader.s
+.PHONY : PeanoDataSet.s
 
 # target to generate assembly for a file
-PeanoMetaReader.cpp.s:
-	$(MAKE) -f CMakeFiles/PeanoReader.dir/build.make CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.s
-.PHONY : PeanoMetaReader.cpp.s
+PeanoDataSet.cpp.s:
+	$(MAKE) -f CMakeFiles/PeanoReader.dir/build.make CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.s
+.PHONY : PeanoDataSet.cpp.s
+
+PeanoMetaFile.o: PeanoMetaFile.cpp.o
+
+.PHONY : PeanoMetaFile.o
+
+# target to build an object file
+PeanoMetaFile.cpp.o:
+	$(MAKE) -f CMakeFiles/PeanoReader.dir/build.make CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.o
+.PHONY : PeanoMetaFile.cpp.o
+
+PeanoMetaFile.i: PeanoMetaFile.cpp.i
+
+.PHONY : PeanoMetaFile.i
+
+# target to preprocess a source file
+PeanoMetaFile.cpp.i:
+	$(MAKE) -f CMakeFiles/PeanoReader.dir/build.make CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.i
+.PHONY : PeanoMetaFile.cpp.i
+
+PeanoMetaFile.s: PeanoMetaFile.cpp.s
+
+.PHONY : PeanoMetaFile.s
+
+# target to generate assembly for a file
+PeanoMetaFile.cpp.s:
+	$(MAKE) -f CMakeFiles/PeanoReader.dir/build.make CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.s
+.PHONY : PeanoMetaFile.cpp.s
 
 PeanoPatch.o: PeanoPatch.cpp.o
 
@@ -405,9 +432,12 @@ help:
 	@echo "... PeanoConverter.o"
 	@echo "... PeanoConverter.i"
 	@echo "... PeanoConverter.s"
-	@echo "... PeanoMetaReader.o"
-	@echo "... PeanoMetaReader.i"
-	@echo "... PeanoMetaReader.s"
+	@echo "... PeanoDataSet.o"
+	@echo "... PeanoDataSet.i"
+	@echo "... PeanoDataSet.s"
+	@echo "... PeanoMetaFile.o"
+	@echo "... PeanoMetaFile.i"
+	@echo "... PeanoMetaFile.s"
 	@echo "... PeanoPatch.o"
 	@echo "... PeanoPatch.i"
 	@echo "... PeanoPatch.s"

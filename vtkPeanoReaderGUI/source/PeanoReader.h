@@ -22,8 +22,8 @@ public:
 	int dimensions = -1;
 	int cells = -1;
 	int vertices = -1;
+	int* patchSize;
 	std::vector<PeanoVariable*> variables;
-	std::vector<int> patchSize;
 	std::vector<PeanoPatch*> patches;
 };
 

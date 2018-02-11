@@ -13,7 +13,6 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include <limits>
 
 #include "vtkImageData.h"
 #include "vtkSmartPointer.h"
@@ -28,7 +27,7 @@
 #include "vtkVoxel.h"
 
 
-vtkSmartPointer<vtkImageData> PeanoConverter::toImageData(PeanoPatch* patch) {
+vtkSmartPointer<vtkImageData> PeanoConverter::toImageData(PeanoPatch *patch) {
 	vtkSmartPointer<vtkImageData> imageData = vtkSmartPointer<vtkImageData>::New();
 
 
@@ -38,9 +37,9 @@ vtkSmartPointer<vtkImageData> PeanoConverter::toImageData(PeanoPatch* patch) {
 	int dimensions[3] = {1, 1, 1};
 
 	for(int i = 0; i < patch->dimensions; i++) {
-		dimensions[i] = patch->patchSize[i] +1;
+		dimensions[i] = patch->resolution[i] +1;
 		offSets[i] = patch->offsets[i];
-		spacing[i] = patch->sizes[i]/patch->patchSize[i];
+		spacing[i] = patch->sizes[i]/patch->resolution[i];
 	}
 
 	imageData->SetDimensions(dimensions);
@@ -68,7 +67,7 @@ vtkSmartPointer<vtkImageData> PeanoConverter::toImageData(PeanoPatch* patch) {
 	return imageData;
 }
 
-vtkSmartPointer<vtkUnstructuredGrid> PeanoConverter::toUnstructuredGrid(PeanoPatch* patch) {
+vtkSmartPointer<vtkUnstructuredGrid> PeanoConverter::toUnstructuredGrid(PeanoPatch *patch) {
 
 	vtkSmartPointer<vtkPoints> points = vtkSmartPointer<vtkPoints>::New();
 
@@ -97,8 +96,8 @@ vtkSmartPointer<vtkUnstructuredGrid> PeanoConverter::toUnstructuredGrid(PeanoPat
 	int dimensions3D[3] = {1, 1, 1};
 	int totalCells = 1;
 	for(int i = 0; i < 3; i++) {
-		totalCells *= patch->patchSize[i];
-		dimensions3D[i] = patch->patchSize[i];
+		totalCells *= patch->resolution[i];
+		dimensions3D[i] = patch->resolution[i];
 	}
 
 	vtkSmartPointer<vtkCellArray> connectivity = vtkSmartPointer<vtkCellArray>::New();
@@ -174,9 +173,8 @@ vtkSmartPointer<vtkUnstructuredGrid> PeanoConverter::combineImageData(std::vecto
 	return combined;
 }
 
-vtkSmartPointer<vtkUnstructuredGrid> PeanoConverter::combineImageData(std::vector<PeanoReader*>* readers) {
+vtkSmartPointer<vtkUnstructuredGrid> PeanoConverter::combineImageData(std::vector<PeanoReader*> *readers) {
 	vtkSmartPointer<vtkAppendFilter> appendFilter = vtkSmartPointer<vtkAppendFilter>::New();
-
 	for(uint i = 0; i < readers->size(); i++) {
 		std::vector<PeanoPatch*> patches = readers->at(i)->patches;
 		for(uint j = 0; j < patches.size(); j++) {
@@ -196,100 +194,154 @@ vtkSmartPointer<vtkUnstructuredGrid> PeanoConverter::combineImageData(std::vecto
 	return combined;
 }
 
-vtkSmartPointer<vtkUnstructuredGrid> PeanoConverter::subSample(std::vector<PeanoReader*>* &readers, int x, int y, int z) {
+PeanoPatch* PeanoConverter::subSample(std::vector<PeanoReader*> &readers, int x, int y, int z) {
 	std::vector<PeanoPatch*> patches;
 
 	double xMax, yMax, zMax, xMin, yMin, zMin;
-	xMax = yMax = zMax = std::numeric_limits<double>::max();
-	xMin = yMin = zMin = std::numeric_limits<double>::min();
+	xMax = yMax = zMax = std::numeric_limits<double>::min();
+	xMin = yMin = zMin = std::numeric_limits<double>::max();
 
 	//calculate the minimum & maximum sizes and add all the patches to the patches vector
-	for(uint i = 0; i < readers->size(); i++) {
+	for(uint i = 0; i < readers.size(); i++) {
 		//add all the reader's patches to the patch vector
-		std::vector<PeanoPatch*> currentPatches = readers->at(i)->patches;
+		std::vector<PeanoPatch*> currentPatches = readers[i]->patches;
 		for(uint j = 0; j < currentPatches.size(); j++) {
 			PeanoPatch* patch = currentPatches[j];
 			patches.push_back(patch);
-			if(patch->offsets[0] > xMin) xMin = patch->offsets[0];
-			if(patch->offsets[1] > yMin) yMin = patch->offsets[1];
-			if(patch->offsets[2] > zMin) zMin = patch->offsets[2];
-			if(patch->offsets[0] + patch.sizes[0] < xMax) xMax = patch->offsets[0] + patch->sizes[0];
-			if(patch->offsets[1] + patch.sizes[1] < yMax) yMax = patch->offsets[1] + patch->sizes[1];
-			if(patch->offsets[2] + patch.sizes[2] < zMax) zMax = patch->offsets[2] + patch->sizes[2];
+			if(patch->offsets[0] < xMin) xMin = patch->offsets[0];
+			if(patch->offsets[1] < yMin) yMin = patch->offsets[1];
+			if(patch->offsets[2] < zMin) zMin = patch->offsets[2];
+			if(patch->offsets[0] + patch->sizes[0] > xMax) xMax = patch->offsets[0] + patch->sizes[0];
+			if(patch->offsets[1] + patch->sizes[1] > yMax) yMax = patch->offsets[1] + patch->sizes[1];
+			if(patch->offsets[2] + patch->sizes[2] > zMax) zMax = patch->offsets[2] + patch->sizes[2];
 		}
 	}
 
-	vtkSmartPointer<vtkImageData> result = vtkSmartPointer<vtkImageData>::New();
+	std::vector<int> patchSize;
+	patchSize.push_back(x);
+	patchSize.push_back(y);
+	patchSize.push_back(z);
 
-	//prepare dimension data for our grid
-	double spacing[3] = {xMax/x, yMax/y, yMax/y};
-	double offSets[3] = {xMin, yMin, zMin};
-	int dimensions[3] = {x, y, z};
+	int* resolution = new int[3];
+	resolution[0] = x;
+	resolution[1] = y;
+	resolution[2] = z;
 
-	imageData->SetDimensions(dimensions);
-	imageData->SetOrigin(offSets);
-	imageData->SetSpacing(spacing);
+	double* offsets = new double[3];
+	offsets[0] = xMin;
+	offsets[1] = yMin;
+	offsets[2] = zMin;
+
+	double* sizes = new double[3];
+	sizes[0] = xMax - xMin;
+	sizes[1] = yMax - yMin;
+	sizes[2] = zMax - zMin;
+
+
+	//put the pieces together
+	PeanoPatch* outPatch = new PeanoPatch();
+	outPatch->dimensions = 3;
+	outPatch->offsets = offsets;
+	outPatch->resolution = resolution;
+	outPatch->sizes = sizes;
 
 	int outputCells = x*y*z;
 	int outputVertices = (x+1)*(y+1)*(z+1);
 
+
+	//std::unordered_map<std::string, PeanoPatchData*> patchData;
+
+
+	//create a list of patchData for the new patch
+	std::vector<PeanoPatchData*> datas;
+	PeanoPatch* patch1 = patches[0];
+	for (auto it : patch1->patchData) {
+		PeanoVariable* var = it.second->structure;
+		PeanoVariable* newVar = new PeanoVariable(var->name, var->unknowns, var->type,
+				(var->type==Cell_Values?outputCells:outputVertices), nullptr, -1);
+
+		PeanoPatchData* newData = new PeanoPatchData(newVar);
+		//set all values to 0
+		for(int j = 0; j < newVar->totalValues; j++) {
+			newData->values[j] = 0;
+		}
+
+		//add the data to the patch and to our list of data objects
+		outPatch->patchData[newData->structure->name] = newData;
+		datas.push_back(newData);
+	}
+
 	for(uint i = 0; i < patches.size(); i++) {
 		PeanoPatch* patch = patches[i];
-		std::vector<int> overlapping = getOverlappingIndexes(patch, result);
+		for (uint dataIndex = 0; dataIndex < datas.size(); dataIndex++) {
+			PeanoPatchData* newData = datas[dataIndex];
+			PeanoVariable* newVar = newData->structure;
+			PeanoPatchData* oldData = patch->patchData[newData->structure->name];
+			PeanoVariable* oldVar = oldData->structure;
 
+			int unknowns = newVar->unknowns;
+			double* data = oldData->values;
 
-	}
+			int x = 0;
+			int y = 0;
+			int z = 0;
 
+			//std::cout << "total values = " << oldVar->totalValues << "\n";
 
+			if(newData->structure->type == Cell_Values) {
+				for(int j = 0; j < oldVar->totalValues; j+= oldVar->unknowns) {
+					double* position = patch->getPositionCellCenter(x,y,z);
 
-	//allocate any variables
-	for(auto kv : patch->patchData) {
-		PeanoPatchData* data = kv.second;
-		vtkSmartPointer<vtkDoubleArray> variableArray = vtkSmartPointer<vtkDoubleArray>::New();
-		variableArray->SetNumberOfComponents(data->structure->unknowns);
-		variableArray->SetName(data->structure->name.c_str());
-		//std:: << "\n " << data->variableName << ": ";
-		for(int i = 0; i < data->structure->totalValues; i += data->structure->unknowns) {
-			variableArray->InsertNextTuple(&data->values[i]);
+					//see my notes for this equation
+					int xCell = (position[0] - offsets[0])*resolution[0]/sizes[0];
+					int yCell = (position[1] - offsets[1])*resolution[1]/sizes[1];
+					int zCell = (position[2] - offsets[2])*resolution[2]/sizes[2];
+
+					delete position;
+
+					int index = outPatch->getIndexCellData(xCell, yCell, zCell);
+					newData->setData(index, data +j);
+
+					//increment the x,y,z values
+					z++;
+					if(z == patch->resolution[2]) {
+						z = 0;
+						y++;
+						if(y == patch->resolution[1]) {
+							y = 0;
+							x++;
+						}
+					}
+				}
+				int breakpoint = 0;
+			} else {//Vertex_Values
+				for(int j = 0; j < oldVar->totalValues; j+= oldVar->unknowns) {
+					double* position = patch->getPositionVertex(x,y,z);
+
+					//see my notes for this equation
+					int xVert = ((position[0] - offsets[0])*resolution[0]/sizes[0])+0.5;
+					int yVert = ((position[1] - offsets[1])*resolution[1]/sizes[1])+0.5;
+					int zVert = ((position[2] - offsets[2])*resolution[2]/sizes[2])+0.5;
+
+					delete position;
+
+					int index = outPatch->getIndexVertexData(xVert, yVert, zVert);
+					newData->setData(index, data +j);
+
+					//increment the x,y,z values
+					z++;
+					if(z == patch->resolution[2] +1) {
+						z = 0;
+						y++;
+						if(y == patch->resolution[1] +1) {
+							y = 0;
+							x++;
+						}
+					}
+				}
+				int breakpoint = 0;
+			}
 		}
-
-		if(data->structure->type == Cell_Values) {
-			imageData->GetCellData()->AddArray(variableArray);
-		} else if(data->structure->type == Vertex_Values) {
-			imageData->GetPointData()->AddArray(variableArray);
-		}
 	}
-	return imageData;
-
-
-
-	return combined;
+	return outPatch;
 }
-
-//PeanoConverter::toStructuredPoints(*PeanoPatch patch) {
-// vtkStructredPoints* grid = new vtkStructredPoints::New();
-//
-// // vtk only uses 3 dimensional grids
-// int[3] dimensions = {0, 0, 0};
-// for(int i = 0; i < patch->dimensions; i++) {
-//   dimensions[i] = patch->patchSize[i];
-// }
-// grid->setDimensions(dimensions);
-//
-// //allocate the points in the grid
-// vtkPoints *nodes = vtkPoints::New();
-// nodes->Allocate(patch->cells);
-//
-// //allocate any variables
-// std::vector<vtkDoubleArray*> variables;
-// for(auto kv : patch->patchData) {
-//   PeanoPatchData* data = kv.second;
-//   vtkDoubleArray* variableArray = vtkDoubleArray::New();
-//   variableArray->SetNumberOfComponents(data->unknowns);
-//   variableArray->SetName(data->totalValues);
-//   std::cout << "\n " << data.variableName << ": ";
-//   for(int i = 0; i < kv.second->totalValues; i += data->unknowns) {
-//     variableArray->>InsertNextTuple(&data->values[i]);
-//   }
-// }
-//}

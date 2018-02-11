@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.6)
 
+set(ParaView_DIR "/home/dan/Documents/ParaView/paraview_build")
+set(Qt5_DIR, "/home/dan/Qt/5.9.2/gcc_64/lib/cmake/Qt5")
 set(QT_PLUGIN_PATH "/home/dan/Qt/5.9.2/gcc_64/plugins")
 
 find_package(OpenMP)
@@ -31,6 +33,6 @@ ADD_PARAVIEW_PLUGIN(
  "1.0"                      #<--Version string
   SERVER_MANAGER_XML vtkPeanoReader.xml  #<-- server manager xml
   SERVER_MANAGER_SOURCES vtkPeanoReader.cpp #<-- main source file
-  SOURCES PeanoPatch.cpp PeanoPatchData.cpp PeanoReader.cpp PeanoMetaReader.cpp PeanoVariable.cpp PeanoConverter.cpp #<-- source files for the new classes
+  SOURCES PeanoPatch.cpp PeanoPatchData.cpp PeanoReader.cpp PeanoMetaFile.cpp PeanoVariable.cpp PeanoConverter.cpp PeanoDataSet.cpp #<-- source files for the new classes
   REQUIRED_ON_SERVER
 )

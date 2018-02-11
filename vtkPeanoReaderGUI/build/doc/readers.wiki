@@ -33,27 +33,22 @@ Available timestep values.
 |
 
 |-
-|'''Preview''' (Preview)
+|'''ResolutionInfo''' (ResolutionInfo)
 |
 
-If selected, the input grid will be sampled on to a regular grid
-of the selected sizes.
+|
 
 |
-0
-|
-Accepts boolean values (0 or 1).
+
 |-
-|'''PreviewSize''' (PreviewSize)
+|'''Resolution''' (Resolution)
+|
+Load the grid with the given dimensions. Any arrays that
+conform to these dimensions will be loaded.
 |
 
-If the preview option is selected, then this option sets the size
-of the grid that we sample the input data on to.
-
 |
-10 10 10
-|
-
+The value(s) can be one of the following:
 
 |}
 

@@ -16,6 +16,7 @@ public:
 	virtual ~PeanoPatchData();
 	PeanoVariable* structure;
 	double* values;
+	void setData(int index, double* pointer);
 };
 
 #endif /* PEANOPATCHDATA_H_ */

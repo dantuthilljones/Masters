@@ -2,9 +2,10 @@
 
 #include "PeanoReader.h"
 #include "PeanoConverter.h"
-#include "PeanoMetaReader.h"
+#include "PeanoMetaFile.h"
 
 #include <fstream>
+#include <string>
 
 #include "vtkUnstructuredGrid.h"
 #include "vtkStructuredGridAlgorithm.h"
@@ -15,6 +16,7 @@
 #include "vtkPolyData.h"
 #include "vtkSmartPointer.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
+#include "vtkStringArray.h"
 
 //----------------------------------------------------------------------------
 vtkStandardNewMacro(vtkPeanoReader);
@@ -50,34 +52,45 @@ int vtkPeanoReader::RequestInformation( vtkInformation* reqInfo, vtkInformationV
     }
 
     std::cout << "Reading initial file " << this->GetFileName() << "...\n";
-    PeanoMetaReader metaReader = PeanoMetaReader(this->GetFileName());
-    datasets = metaReader.getDataSets();
-    int numDatasets = datasets.size();
-
-
+    metaFile = new PeanoMetaFile(this->GetFileName());
 
     //tell the caller what range of times I can deal with
-    std::cout << "Telling paraview we have a time range of 0 to " << numDatasets << "\n";
-    double timeRange[2] = {0, numDatasets -1};
+    std::cout << "Telling paraview we have a time range of 0 to " << metaFile->numberOfDataSets() << "\n";
+    double timeRange[2] = {0, metaFile->numberOfDataSets() -1};
     info->Set(vtkStreamingDemandDrivenPipeline::TIME_RANGE(), timeRange, 2);
 
     //tell the caller the actual steps that I can deal with
-    double timeSteps[numDatasets];
+    double timeSteps[metaFile->numberOfDataSets()];
     std::cout << "Telling paraview our time steps are: ";
-    for(int i = 0; i < numDatasets; i++) {
+    for(int i = 0; i < metaFile->numberOfDataSets(); i++) {
         timeSteps[i] = i;
         std::cout << i << " ";
     }
     std::cout << "\n";
-    info->Set(vtkStreamingDemandDrivenPipeline::TIME_STEPS(), timeSteps, numDatasets);
+    info->Set(vtkStreamingDemandDrivenPipeline::TIME_STEPS(), timeSteps, metaFile->numberOfDataSets());
 
-    //tell it that I can provide time varying data
+    //tell paraview that I can provide time varying data
     std::cout << "Telling paraview can handle time varying data\n";
     info->Set(CAN_HANDLE_PIECE_REQUEST(), 1);
 
-    //resize the cache
-    gridCache.resize(numDatasets, vtkSmartPointer<vtkUnstructuredGrid>::New());
-    gridCacheExists.resize(numDatasets, false);
+    //resize the cache, not currently used
+    //gridCache.resize(numDatasets, vtkSmartPointer<vtkUnstructuredGrid>::New());
+    //gridCacheExists.resize(numDatasets, false);
+
+
+    //create the values for the dresolution drop down box
+    std::vector<std::vector<int>>* resolutions = metaFile->getDataSet(0)->getResolutions();
+    int newResolutions = resolutions->size();
+
+    resolutionsArray = vtkStringArray::New();
+    resolutionsArray->SetNumberOfValues(newResolutions +1);
+    resolutionsArray->SetValue(0, "Full");
+
+    for(int i = 0; i < newResolutions; i++) {
+        std::vector<int> xyz = resolutions->at(i);
+        resolutionsArray->SetValue(i+1, "(" + std::to_string(xyz[0]) + "," + std::to_string(xyz[1])
+         + "," + std::to_string(xyz[2]) + ")");
+    }
 
     return 1;
 }
@@ -100,12 +113,7 @@ int vtkPeanoReader::RequestData(vtkInformation *vtkNotUsed(request), vtkInformat
     //int reqNTS = 0;
     double reqTS(0);
     if (outInfo->Has(vtkStreamingDemandDrivenPipeline::UPDATE_TIME_STEP())) {
-        //reqNTS = outInfo->Length
-        //  (vtkStreamingDemandDrivenPipeline::UPDATE_TIME_STEP());
         reqTS = outInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_TIME_STEP());
-
-        //TODO: produce multiblock output when multiple time steps are asked for
-        //for now just answer the first one
         reqTime = reqTS;
     }
 
@@ -114,45 +122,68 @@ int vtkPeanoReader::RequestData(vtkInformation *vtkNotUsed(request), vtkInformat
     std::cout << "Paraview has requested time " << reqTime << " (" << datasetIndex << ")...\n";
 
 
-    if(gridCacheExists[datasetIndex]) {
-        std::cout << "Returning cached object...\n";
-        output->ShallowCopy(gridCache[datasetIndex]);
-        return 1;
+    //used for caching
+    // if(gridCacheExists[datasetIndex]) {
+    //     std::cout << "Returning cached object...\n";
+    //     output->ShallowCopy(gridCache[datasetIndex]);
+    //     return 1;
+    // }
+
+    std::cout << "Paraview has requested resolution " << selectedResolution << "\n";
+
+    std::vector<PeanoReader*>* readers = nullptr;
+
+    if(selectedResolution.compare("Full") == 0) {
+        readers = metaFile->createReadersFull(datasetIndex);
+    } else {
+        for(int i = 1; i < resolutionsArray->GetNumberOfValues(); i++) {
+            std::cout << "Resolution array value = " << resolutionsArray->GetValue(i) << "\n";
+            if(selectedResolution.compare(resolutionsArray->GetValue(i)) == 0) {
+                readers = metaFile->createReadersResolution(datasetIndex, i-1);
+                break;
+            }
+        }
     }
 
-    std::vector<std::string> dataset = datasets[datasetIndex];
-    std::vector<PeanoReader*> readers;
-
-    for(uint j = 0; j < dataset.size(); j++) {
-        std::string file = dataset[j];
-        std::cout << "Reading data from " << file << "...\n";
-        PeanoReader* reader = new PeanoReader(file);
-        readers.push_back(reader);
-    }
+    std::cout << "readers address = " << readers << "\n";
 
     std::cout << "Generating output grid...\n";
-    vtkSmartPointer<vtkUnstructuredGrid> outGrid = PeanoConverter::combineImageData(&readers);
+    vtkSmartPointer<vtkUnstructuredGrid> outGrid = PeanoConverter::combineImageData(readers);
     std::cout << "Done!...\n";
 
-    std::cout << "Storing output grid incase it is requested again...\n";
-    gridCache[datasetIndex] = outGrid;
-    std::cout << "Done!...\n";
+    //used for caching
+    //std::cout << "Storing output grid incase it is requested again...\n";
+    //gridCache[datasetIndex] = outGrid;
+    //std::cout << "Done!...\n";
 
     std::cout << "Setting output grid...\n";
     output->ShallowCopy(outGrid);
     std::cout << "Done!...\n";
 
-    for(PeanoReader* reader: readers) {
-        std::cout << "Deleting reader...\n";
-        delete reader;
+    std::cout << "Deleting readers...\n";
+    for(uint i = 0; i < readers->size(); i++) {
+        delete readers->at(i);
     }
 
+    //not currently implemented
     //add new grid to cache
-    gridCache[datasetIndex] = outGrid;
-    gridCacheExists[datasetIndex] = true;
+    //gridCache[datasetIndex] = outGrid;
+    //gridCacheExists[datasetIndex] = true;
 
     return 1;
 }
+
+void vtkPeanoReader::SetResolution(const char* status) {
+    selectedResolution = std::string(status);
+}
+
+vtkStringArray *vtkPeanoReader::GetResolutions() {
+    return resolutionsArray;
+}
+
+
+
+
 
 void vtkPeanoReader::SetPreview(int preview) {
     std::cout << "SetPreview called with value " << preview <<"\n";

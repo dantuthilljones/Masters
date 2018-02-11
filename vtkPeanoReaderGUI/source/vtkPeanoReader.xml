@@ -29,7 +29,7 @@
             Available timestep values.
         </Documentation>
       </DoubleVectorProperty>
-      <IntVectorProperty
+      <!-- <IntVectorProperty
           name="Preview"
           command="SetPreview"
           number_of_elements="1"
@@ -50,7 +50,31 @@
           If the preview option is selected, then this option sets the size
           of the grid that we sample the input data on to.
         </Documentation>
-      </IntVectorProperty>
+      </IntVectorProperty> -->
+
+      <!-- Resolution selection GUI -->
+      <StringVectorProperty command="GetResolutions"
+                            information_only="1"
+                            name="ResolutionInfo">
+        <StringArrayHelper />
+      </StringVectorProperty>
+      <StringVectorProperty animatelable="0"
+                            command="SetResolution"
+                            name="Resolution"
+                            number_of_elements="1"
+                            panel_visibility="default">
+        <StringListDomain name="array_list">
+          <RequiredProperties>
+            <Property function="ArrayList"
+                      name="ResolutionInfo" />
+          </RequiredProperties>
+        </StringListDomain>
+        <Documentation>Load the grid with the given dimensions. Any arrays that
+        conform to these dimensions will be loaded.</Documentation>
+      </StringVectorProperty>
+      <!-- End Resolution selection GUI -->
+
+
       <Hints>
         <ReaderFactory
             extensions="peano-patch-file"

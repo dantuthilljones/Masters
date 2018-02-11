@@ -25,15 +25,35 @@
 
 class PeanoPatch {
 public:
-	PeanoPatch(std::vector<std::string> &text, int dimensions, std::vector<int> &patchSize, std::vector<PeanoVariable*> &variables) ;
+	PeanoPatch(std::vector<std::string> &text, int dimensions, int* patchSize, std::vector<PeanoVariable*> &variables) ;
+	PeanoPatch();
 	virtual ~PeanoPatch();
-	int dimensions;
-	std::vector<int> patchSize;
+	int dimensions;//number of dimensions, probably 3
+
+	/*
+	 * number of points in each dimension
+	 */
+	int* resolution;
+
+	/*
+	 * offset of the patch in each dimension
+	 */
 	double* offsets;
+
+	/*
+	 * size of the patch in each dimension
+	 */
 	double* sizes;
+
 	std::unordered_map<std::string, PeanoPatchData*> patchData;
 	bool hasMappings();
 	PeanoVariable* getStructure();
+	double* getPositionMap(int x, int y, int z);
+	double* getPositionVertex(int x, int y, int z);
+	double* getPositionCellCenter(int x, int y, int z);
+	int getIndexCellData(int x, int y, int z);
+	int getIndexVertexData(int x, int y, int z);
+	bool saveToFile(std::string filename);
 };
 
 #endif /* PEANOPATCH_H_ */

@@ -230,28 +230,28 @@ CMakeFiles/PeanoReader.dir/PeanoReader.cpp.o.provides: CMakeFiles/PeanoReader.di
 CMakeFiles/PeanoReader.dir/PeanoReader.cpp.o.provides.build: CMakeFiles/PeanoReader.dir/PeanoReader.cpp.o
 
 
-CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.o: CMakeFiles/PeanoReader.dir/flags.make
-CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.o: /home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoMetaReader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/vtkPeanoReaderGUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.o -c /home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoMetaReader.cpp
+CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.o: CMakeFiles/PeanoReader.dir/flags.make
+CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.o: /home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoMetaFile.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/vtkPeanoReaderGUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.o -c /home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoMetaFile.cpp
 
-CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoMetaReader.cpp > CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.i
+CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoMetaFile.cpp > CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.i
 
-CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoMetaReader.cpp -o CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.s
+CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoMetaFile.cpp -o CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.s
 
-CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.o.requires:
+CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.o.requires:
 
-.PHONY : CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.o.requires
+.PHONY : CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.o.requires
 
-CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.o.provides: CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.o.requires
-	$(MAKE) -f CMakeFiles/PeanoReader.dir/build.make CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.o.provides.build
-.PHONY : CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.o.provides
+CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.o.provides: CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.o.requires
+	$(MAKE) -f CMakeFiles/PeanoReader.dir/build.make CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.o.provides.build
+.PHONY : CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.o.provides
 
-CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.o.provides.build: CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.o
+CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.o.provides.build: CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.o
 
 
 CMakeFiles/PeanoReader.dir/PeanoVariable.cpp.o: CMakeFiles/PeanoReader.dir/flags.make
@@ -302,9 +302,33 @@ CMakeFiles/PeanoReader.dir/PeanoConverter.cpp.o.provides: CMakeFiles/PeanoReader
 CMakeFiles/PeanoReader.dir/PeanoConverter.cpp.o.provides.build: CMakeFiles/PeanoReader.dir/PeanoConverter.cpp.o
 
 
+CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.o: CMakeFiles/PeanoReader.dir/flags.make
+CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.o: /home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoDataSet.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/vtkPeanoReaderGUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.o -c /home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoDataSet.cpp
+
+CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoDataSet.cpp > CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.i
+
+CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoDataSet.cpp -o CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.s
+
+CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.o.requires:
+
+.PHONY : CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.o.requires
+
+CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.o.provides: CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.o.requires
+	$(MAKE) -f CMakeFiles/PeanoReader.dir/build.make CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.o.provides.build
+.PHONY : CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.o.provides
+
+CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.o.provides.build: CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.o
+
+
 CMakeFiles/PeanoReader.dir/PeanoReader_Plugin.cxx.o: CMakeFiles/PeanoReader.dir/flags.make
 CMakeFiles/PeanoReader.dir/PeanoReader_Plugin.cxx.o: PeanoReader_Plugin.cxx
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/vtkPeanoReaderGUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/PeanoReader.dir/PeanoReader_Plugin.cxx.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/Documents/Masters/vtkPeanoReaderGUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/PeanoReader.dir/PeanoReader_Plugin.cxx.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PeanoReader.dir/PeanoReader_Plugin.cxx.o -c /home/dan/Documents/Masters/vtkPeanoReaderGUI/build/PeanoReader_Plugin.cxx
 
 CMakeFiles/PeanoReader.dir/PeanoReader_Plugin.cxx.i: cmake_force
@@ -334,9 +358,10 @@ PeanoReader_OBJECTS = \
 "CMakeFiles/PeanoReader.dir/PeanoPatch.cpp.o" \
 "CMakeFiles/PeanoReader.dir/PeanoPatchData.cpp.o" \
 "CMakeFiles/PeanoReader.dir/PeanoReader.cpp.o" \
-"CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.o" \
+"CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.o" \
 "CMakeFiles/PeanoReader.dir/PeanoVariable.cpp.o" \
 "CMakeFiles/PeanoReader.dir/PeanoConverter.cpp.o" \
+"CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.o" \
 "CMakeFiles/PeanoReader.dir/PeanoReader_Plugin.cxx.o"
 
 # External object files for target PeanoReader
@@ -348,9 +373,10 @@ libPeanoReader.so: CMakeFiles/PeanoReader.dir/PeanoReaderInit.cxx.o
 libPeanoReader.so: CMakeFiles/PeanoReader.dir/PeanoPatch.cpp.o
 libPeanoReader.so: CMakeFiles/PeanoReader.dir/PeanoPatchData.cpp.o
 libPeanoReader.so: CMakeFiles/PeanoReader.dir/PeanoReader.cpp.o
-libPeanoReader.so: CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.o
+libPeanoReader.so: CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.o
 libPeanoReader.so: CMakeFiles/PeanoReader.dir/PeanoVariable.cpp.o
 libPeanoReader.so: CMakeFiles/PeanoReader.dir/PeanoConverter.cpp.o
+libPeanoReader.so: CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.o
 libPeanoReader.so: CMakeFiles/PeanoReader.dir/PeanoReader_Plugin.cxx.o
 libPeanoReader.so: CMakeFiles/PeanoReader.dir/build.make
 libPeanoReader.so: /home/dan/Documents/ParaView/paraview_build/lib/libvtkPVAnimation-pv5.4.so.1
@@ -444,7 +470,7 @@ libPeanoReader.so: /home/dan/Documents/ParaView/paraview_build/lib/libvtkClientS
 libPeanoReader.so: /home/dan/Documents/ParaView/paraview_build/lib/libvtkCommonCore-pv5.4.so.1
 libPeanoReader.so: /home/dan/Documents/ParaView/paraview_build/lib/libvtksys-pv5.4.so.1
 libPeanoReader.so: CMakeFiles/PeanoReader.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dan/Documents/Masters/vtkPeanoReaderGUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX shared library libPeanoReader.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dan/Documents/Masters/vtkPeanoReaderGUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX shared library libPeanoReader.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PeanoReader.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -458,9 +484,10 @@ CMakeFiles/PeanoReader.dir/requires: CMakeFiles/PeanoReader.dir/PeanoReaderInit.
 CMakeFiles/PeanoReader.dir/requires: CMakeFiles/PeanoReader.dir/PeanoPatch.cpp.o.requires
 CMakeFiles/PeanoReader.dir/requires: CMakeFiles/PeanoReader.dir/PeanoPatchData.cpp.o.requires
 CMakeFiles/PeanoReader.dir/requires: CMakeFiles/PeanoReader.dir/PeanoReader.cpp.o.requires
-CMakeFiles/PeanoReader.dir/requires: CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.o.requires
+CMakeFiles/PeanoReader.dir/requires: CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.o.requires
 CMakeFiles/PeanoReader.dir/requires: CMakeFiles/PeanoReader.dir/PeanoVariable.cpp.o.requires
 CMakeFiles/PeanoReader.dir/requires: CMakeFiles/PeanoReader.dir/PeanoConverter.cpp.o.requires
+CMakeFiles/PeanoReader.dir/requires: CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.o.requires
 CMakeFiles/PeanoReader.dir/requires: CMakeFiles/PeanoReader.dir/PeanoReader_Plugin.cxx.o.requires
 
 .PHONY : CMakeFiles/PeanoReader.dir/requires

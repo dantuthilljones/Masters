@@ -101,6 +101,25 @@ int VTK_EXPORT vtkPeanoReaderCommand(vtkClientServerInterpreter *arlu, vtkObject
       return 1;
       }
     }
+  if (!strcmp("SetResolution",method) && msg.GetNumberOfArguments(0) == 3)
+    {
+    char    *temp0;
+    if(msg.GetArgument(0, 2, &temp0))
+      {
+      op->SetResolution(temp0);
+      return 1;
+      }
+    }
+  if (!strcmp("GetResolutions",method) && msg.GetNumberOfArguments(0) == 2)
+    {
+    vtkStringArray  *temp20;
+      {
+      temp20 = (op)->GetResolutions();
+      resultStream.Reset();
+      resultStream << vtkClientServerStream::Reply << (vtkObjectBase *)temp20 << vtkClientServerStream::End;
+      return 1;
+      }
+    }
 
   {
     const char* commandName = "vtkUnstructuredGridReader";

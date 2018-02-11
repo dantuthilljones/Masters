@@ -255,6 +255,8 @@ Boost_DIR-ADVANCED:INTERNAL=1
 Boost_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
 CMAKE_AR-ADVANCED:INTERNAL=1
+//MODIFIED property for variable: CMAKE_BUILD_TYPE
+CMAKE_BUILD_TYPE-MODIFIED:INTERNAL=ON
 //This is the directory where this CMakeCache.txt was created
 CMAKE_CACHEFILE_DIR:INTERNAL=/home/dan/Documents/Masters/vtkPeanoReaderGUI/build
 //Major version of cmake used to create the current loaded cache
@@ -418,10 +420,14 @@ OpenMP_SPECTEST_C_:INTERNAL=TRUE
 OpenMP_gomp_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OpenMP_pthread_LIBRARY
 OpenMP_pthread_LIBRARY-ADVANCED:INTERNAL=1
+//MODIFIED property for variable: ParaView_DIR
+ParaView_DIR-MODIFIED:INTERNAL=ON
 //ADVANCED property for variable: QT_HELP_GENERATOR
 QT_HELP_GENERATOR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: QT_XMLPATTERNS_EXECUTABLE
 QT_XMLPATTERNS_EXECUTABLE-ADVANCED:INTERNAL=1
+//MODIFIED property for variable: Qt5_DIR
+Qt5_DIR-MODIFIED:INTERNAL=ON
 //Components requested for this build tree.
 _Boost_COMPONENTS_SEARCHED:INTERNAL=
 //Last used Boost_INCLUDE_DIR value.

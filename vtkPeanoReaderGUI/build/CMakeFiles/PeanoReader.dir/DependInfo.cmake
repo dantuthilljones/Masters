@@ -5,7 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoConverter.cpp" "/home/dan/Documents/Masters/vtkPeanoReaderGUI/build/CMakeFiles/PeanoReader.dir/PeanoConverter.cpp.o"
-  "/home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoMetaReader.cpp" "/home/dan/Documents/Masters/vtkPeanoReaderGUI/build/CMakeFiles/PeanoReader.dir/PeanoMetaReader.cpp.o"
+  "/home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoDataSet.cpp" "/home/dan/Documents/Masters/vtkPeanoReaderGUI/build/CMakeFiles/PeanoReader.dir/PeanoDataSet.cpp.o"
+  "/home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoMetaFile.cpp" "/home/dan/Documents/Masters/vtkPeanoReaderGUI/build/CMakeFiles/PeanoReader.dir/PeanoMetaFile.cpp.o"
   "/home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoPatch.cpp" "/home/dan/Documents/Masters/vtkPeanoReaderGUI/build/CMakeFiles/PeanoReader.dir/PeanoPatch.cpp.o"
   "/home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoPatchData.cpp" "/home/dan/Documents/Masters/vtkPeanoReaderGUI/build/CMakeFiles/PeanoReader.dir/PeanoPatchData.cpp.o"
   "/home/dan/Documents/Masters/vtkPeanoReaderGUI/source/PeanoReader.cpp" "/home/dan/Documents/Masters/vtkPeanoReaderGUI/build/CMakeFiles/PeanoReader.dir/PeanoReader.cpp.o"
