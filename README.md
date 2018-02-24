@@ -48,6 +48,13 @@ The second is a plugin for the scientific viewing software Paraview. This adds t
 ### Installation
 The installation for the paraview plug in is much more long-winded than for the subsampler because it requires you to compile your own version of paraview. A guide for this can be found here https://www.paraview.org/Wiki/ParaView:Build_And_Install
 
+I encountered a lot of problems compiling paraview myself and I've listed the solutions to the ones I can remember off the top of my head below
+
+* `This application failed to start because it could not find or load the Qt platform plugin "xcb"`
+Set the environment variable QT_PLUGIN_PATH to your QT plugins folder. For me the command is `export QT_PLUGIN_PATH=/home/dan/Qt/5.9.2/gcc_64/plugins`.
+*  `libprotobuf FATAL ... protobuf/vtkprotobuf/src/google/protobuf/stubs/common.cc:62 ... something something version 2.6.0 something 2.3.0 ...` 
+This is caused by the file `libqgtk3.so` which is found in your QT installation at `Qt/5.9.2/gcc_64/plugins/platformthemes/`. You should move this file somewhere else, but don't delete it because you won't be able to compile plugins without it. The repository contains a script I use paraview.sh. This script moves the file from the folder, opens paraview then moves it back after 5 seconds. You may want to modify it yourself to work on your environment.
+
 #### Dependancies
 Note: the versions listed below are what I used but others should work.
 
@@ -62,7 +69,7 @@ Note: the versions listed below are what I used but others should work.
 3. Create a folder called "bin" `mkdir bin`
 4. Move in to this new folder `cd bin`
 5. Set the environment variable "QT_PLUGIN_PATH" to the qt plugin location. For me this location is "/home/dan/Qt/5.9.2/gcc_64/plugins" and so the command is `export QT_PLUGIN_PATH=/home/dan/Qt/5.9.2/gcc_64/plugins`
-6. If you moved the libqgtk3.so file so that paravie will open, you will need to put it back in the platformthemes folder now
+6. If you moved the libqgtk3.so file so that paraview will open, you will need to put it back in the platformthemes folder now
 6. Generate the project via cmake `ccmake ../src`
 7. In the CMake interface, press `c` to configure the project. This will probably fail because your dependancies will have different location to mine. You will need to correct the values of "Boost\_INCLUDE\_DIR" and "ParaView\_DIR". If they don't appear in the interface, try pressing `t` which opens advanced options.
 7. Select the generate option once it is available in the CMake interface by pressing `g`
