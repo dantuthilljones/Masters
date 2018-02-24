@@ -1,5 +1,7 @@
 #ignore all bin folders
 bin/
 
-#ignore ExampleFiles folder
+#ignore ExampleFiles folder (one of these should get it lol)
 /ExampleFiles/
+/ExampleFiles
+ExampleFiles
