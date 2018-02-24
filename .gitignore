@@ -1,0 +1,5 @@
+#ignore all bin folders
+bin/
+
+#ignore ExampleFiles folder
+/ExampleFiles/

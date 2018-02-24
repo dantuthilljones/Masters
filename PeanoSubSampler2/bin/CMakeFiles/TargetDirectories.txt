@@ -1,3 +1,0 @@
-/home/dan/Documents/Masters/PeanoSubSampler2/bin/CMakeFiles/rebuild_cache.dir
-/home/dan/Documents/Masters/PeanoSubSampler2/bin/CMakeFiles/edit_cache.dir
-/home/dan/Documents/Masters/PeanoSubSampler2/bin/CMakeFiles/PeanoSubSampler.dir

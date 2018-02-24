@@ -1,3 +1,0 @@
-/home/dan/Documents/Masters/vtkPeanoReaderGUI/build/CMakeFiles/rebuild_cache.dir
-/home/dan/Documents/Masters/vtkPeanoReaderGUI/build/CMakeFiles/edit_cache.dir
-/home/dan/Documents/Masters/vtkPeanoReaderGUI/build/CMakeFiles/PeanoReader.dir

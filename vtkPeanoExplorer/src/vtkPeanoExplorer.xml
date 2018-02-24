@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ServerManagerConfiguration>
+  <ProxyGroup name="filters">
+    <SourceProxy class="vtkPeanoExplorer"             label="Peano Explorer"             name="PeanoExplorer">
+      <Documentation long_help="Explore the peano dataset with this plugin!"                 short_help="Explore the peano dataset with this plugin!!">                 Some other documentation goes here</Documentation>
+      <InputProperty command="SetInputConnection"                 name="Input">
+        <ProxyGroupDomain name="groups">
+          <Group name="sources" />
+          <Group name="filters" />
+        </ProxyGroupDomain>
+        <DataTypeDomain name="input_type">
+          <DataType value="vtkUnstructuredGrid" />
+        </DataTypeDomain>
+        <InputArrayDomain attribute_type="point"                      name="input_array"                      optional="1" />
+        <Documentation>Set the input to the Generic Clip    filter.</Documentation>
+      </InputProperty>
+      <InputProperty is_internal="1" name="DummyInput">
+              <!-- Used when this source is added to a proxy list domain. -->
+            </InputProperty>
+
+            <PropertyGroup label="Volume Parameters" panel_widget="InteractiveBox">
+              <Property function="Position" name="Origin" />
+              <Property function="Scale" name="Scale" />
+            </PropertyGroup>
+            <Hints>
+              <ProxyList>
+                <Link name="DummyInput" with_property="Input" />
+              </ProxyList>
+            </Hints>
+
+      <!-- End GenericClip -->
+    </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>
