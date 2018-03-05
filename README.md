@@ -70,10 +70,11 @@ Note: the versions listed below are what I used but others should work.
 4. Move in to this new folder `cd bin`
 5. Set the environment variable "QT_PLUGIN_PATH" to the qt plugin location. For me this location is "/home/dan/Qt/5.9.2/gcc_64/plugins" and so the command is `export QT_PLUGIN_PATH=/home/dan/Qt/5.9.2/gcc_64/plugins`
 6. If you moved the libqgtk3.so file so that paraview will open, you will need to put it back in the platformthemes folder now
-6. Generate the project via cmake `ccmake ../src`
-7. In the CMake interface, press `c` to configure the project. This will probably fail because your dependancies will have different location to mine. You will need to correct the values of "Boost\_INCLUDE\_DIR" and "ParaView\_DIR". If they don't appear in the interface, try pressing `t` which opens advanced options.
-7. Select the generate option once it is available in the CMake interface by pressing `g`
-8. Build the project via make `make`. This should create "vtkPeanoReader.so" in the bin folder.
-9. If the libqgtk3.so file is in the platformthemes folder, you will have to remove it so that paraview can run. The repository contains a script I use paraview.sh. This script moves the file from the folder, opens paraview then moves it back after 5 seconds. You may want to modify it yourself to work on your environment.
-8. Open your compiled version of paraview
-9. Add the plugin via Tools > Manage Plugin > Load New and selecting the file vtkPeanoReader.so
+7. Generate the project via cmake `ccmake ../src`
+8. The build should fail because of something to do with Qt5. To solve this set "Qt5_DIR" in the cmake interface to the location of "Qt5Config.cmake". For me this is in "/home/dan/Qt/5.9.2/gcc_64/lib/cmake/Qt5"
+9. In the CMake interface, press `c` to configure the project. This will probably fail because of more dependancies. You will need to correct the values of "Boost\_INCLUDE\_DIR" and "ParaView\_DIR". If they don't appear in the interface, try pressing `t` which opens advanced options.
+10. Select the generate option once it is available in the CMake interface by pressing `g`
+11. Build the project via make `make`. This should create "vtkPeanoReader.so" in the bin folder.
+12. If the libqgtk3.so file is in the platformthemes folder, you will have to remove it so that paraview can run. The repository contains a script I use paraview.sh. This script moves the file from the folder, opens paraview then moves it back after 5 seconds. You may want to modify it yourself to work on your environment.
+13. Open your compiled version of paraview
+14. Add the plugin via Tools > Manage Plugin > Load New and selecting the file vtkPeanoReader.so
