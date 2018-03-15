@@ -29,28 +29,28 @@
             Available timestep values.
         </Documentation>
       </DoubleVectorProperty>
-      <!-- <IntVectorProperty
-          name="Preview"
-          command="SetPreview"
+      <IntVectorProperty
+          name="Subsample on the fly"
+          command="SetOnTheFly"
           number_of_elements="1"
           default_values="0">
         <BooleanDomain name="bool"/>
         <Documentation>
-          If selected, the input grid will be sampled on to a regular grid
-          of the selected sizes.
+          If selected, the input grid will be sampled the fly on to a regular
+          grid of the specified resolution.
         </Documentation>
       </IntVectorProperty>
       <IntVectorProperty
-          command="SetPreviewSize"
+          command="SetOnTheFlySize"
           default_values="10 10 10"
-          name="PreviewSize"
+          name="Subsample resolution"
           number_of_elements="3">
         <IntRangeDomain name="range"/>
         <Documentation>
           If the preview option is selected, then this option sets the size
           of the grid that we sample the input data on to.
         </Documentation>
-      </IntVectorProperty> -->
+      </IntVectorProperty>
 
       <!-- Resolution selection GUI -->
       <StringVectorProperty command="GetResolutions"
@@ -60,7 +60,7 @@
       </StringVectorProperty>
       <StringVectorProperty animatelable="0"
                             command="SetResolution"
-                            name="Resolution"
+                            name="Resolution to load"
                             number_of_elements="1"
                             panel_visibility="default">
         <StringListDomain name="array_list">

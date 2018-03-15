@@ -129,47 +129,61 @@ int vtkPeanoReader::RequestData(vtkInformation *vtkNotUsed(request), vtkInformat
     //     return 1;
     // }
 
-    std::cout << "Paraview has requested resolution " << selectedResolution << "\n";
+    if(fly) {
+        std::cout << "Paraview has requested on the fly resolution (" << flyX << "," << flyY << "," << flyZ << ")\n";
+        std::cout << "Subsampling on to a new PeanoPatch...\n";
+        PeanoPatch* patch = metaFile->getDataSet(datasetIndex)->createSubSample(flyX, flyY, flyZ, false);
+        std::cout << "Done!\n";
 
-    std::vector<PeanoReader*>* readers = nullptr;
+        std::vector<PeanoPatch*>* patches = new std::vector<PeanoPatch*>();
+        patches->push_back(patch);
 
-    if(selectedResolution.compare("Full") == 0) {
-        readers = metaFile->createReadersFull(datasetIndex);
+        std::cout << "Converting patch to vtkUnstructuredGrid...\n";
+        vtkSmartPointer<vtkUnstructuredGrid> outGrid = PeanoConverter::combineImageData(patches);
+        std::cout << "Done!\n";
+
+        std::cout << "Setting output grid...\n";
+        output->ShallowCopy(outGrid);
+        std::cout << "Done!\n";
+
+        std::cout << "Deleting patch...\n";
+        delete patch;
+        delete patches;
+        std::cout << "Done!\n";
     } else {
-        for(int i = 1; i < resolutionsArray->GetNumberOfValues(); i++) {
-            std::cout << "Resolution array value = " << resolutionsArray->GetValue(i) << "\n";
-            if(selectedResolution.compare(resolutionsArray->GetValue(i)) == 0) {
-                readers = metaFile->createReadersResolution(datasetIndex, i-1);
-                break;
+        std::cout << "Paraview has requested precomputed resolution " << selectedResolution << "\n";
+
+        std::vector<PeanoReader*>* readers = nullptr;
+
+        if(selectedResolution.compare("Full") == 0) {
+            readers = metaFile->createReadersFull(datasetIndex);
+        } else {
+            for(int i = 1; i < resolutionsArray->GetNumberOfValues(); i++) {
+                std::cout << "Resolution array value = " << resolutionsArray->GetValue(i) << "\n";
+                if(selectedResolution.compare(resolutionsArray->GetValue(i)) == 0) {
+                    readers = metaFile->createReadersResolution(datasetIndex, i-1);
+                    break;
+                }
             }
+        }
+
+        std::cout << "readers address = " << readers << "\n";
+
+        std::cout << "Generating output grid...\n";
+        vtkSmartPointer<vtkUnstructuredGrid> outGrid = PeanoConverter::combineImageData(readers);
+        std::cout << "Done!\n";
+
+        std::cout << "Setting output grid...\n";
+        output->ShallowCopy(outGrid);
+        std::cout << "Done!\n";
+
+        std::cout << "Deleting readers...\n";
+        for(uint i = 0; i < readers->size(); i++) {
+            delete readers->at(i);
         }
     }
 
-    std::cout << "readers address = " << readers << "\n";
-
-    std::cout << "Generating output grid...\n";
-    vtkSmartPointer<vtkUnstructuredGrid> outGrid = PeanoConverter::combineImageData(readers);
-    std::cout << "Done!...\n";
-
-    //used for caching
-    //std::cout << "Storing output grid incase it is requested again...\n";
-    //gridCache[datasetIndex] = outGrid;
-    //std::cout << "Done!...\n";
-
-    std::cout << "Setting output grid...\n";
-    output->ShallowCopy(outGrid);
-    std::cout << "Done!...\n";
-
-    std::cout << "Deleting readers...\n";
-    for(uint i = 0; i < readers->size(); i++) {
-        delete readers->at(i);
-    }
-
-    //not currently implemented
-    //add new grid to cache
-    //gridCache[datasetIndex] = outGrid;
-    //gridCacheExists[datasetIndex] = true;
-
+    std::cout << "Returning 1...\n";
     return 1;
 }
 
@@ -185,12 +199,17 @@ vtkStringArray *vtkPeanoReader::GetResolutions() {
 
 
 
-void vtkPeanoReader::SetPreview(int preview) {
-    std::cout << "SetPreview called with value " << preview <<"\n";
+void vtkPeanoReader::SetOnTheFly(int fly) {
+    std::cout << "SetOntheFly called with value " << fly <<"\n";
+    this->fly = fly;
+
 }
 
-void vtkPeanoReader::SetPreviewSize(int x, int y, int z) {
-    std::cout << "SetPreviewSize called with values (" << x << "," << y << "," << z << ")\n";
+void vtkPeanoReader::SetOnTheFlySize(int x, int y, int z) {
+    std::cout << "SetOntheFlySize called with values (" << x << "," << y << "," << z << ")\n";
+    this->flyX = x;
+    this->flyY = y;
+    this->flyZ = z;
 }
 
 //----------------------------------------------------------------------------

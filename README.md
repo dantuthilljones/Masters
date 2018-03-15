@@ -43,14 +43,14 @@ For example the command `./PeanoStandalone subsample /home/dan/Documents/Masters
 ####
 
 ## Paraview Plugin
-The second is a plugin for the scientific viewing software Paraview. This adds the standalone program's functionality to paraview and in the future will support exploration of peano data at different resolutions.
+The second is a plugin for the scientific viewing software Paraview. This adds the standalone program's functionality to paraview, allowing you to load pre-computed subsampled data or subsampling it on the fly.
 
 ### Installation
 The installation for the paraview plug in is much more long-winded than for the subsampler because it requires you to compile your own version of paraview. A guide for this can be found here https://www.paraview.org/Wiki/ParaView:Build_And_Install
 
 I encountered a lot of problems compiling paraview myself and I've listed the solutions to the ones I can remember off the top of my head below
 
-* `This application failed to start because it could not find or load the Qt platform plugin "xcb"`
+* `This application failed to start because it could not find or load the Qt platform plugin...`
 Set the environment variable QT_PLUGIN_PATH to your QT plugins folder. For me the command is `export QT_PLUGIN_PATH=/home/dan/Qt/5.9.2/gcc_64/plugins`.
 *  `libprotobuf FATAL ... protobuf/vtkprotobuf/src/google/protobuf/stubs/common.cc:62 ... something something version 2.6.0 something 2.3.0 ...` 
 This is caused by the file `libqgtk3.so` which is found in your QT installation at `Qt/5.9.2/gcc_64/plugins/platformthemes/`. You should move this file somewhere else, but don't delete it because you won't be able to compile plugins without it. The repository contains a script I use paraview.sh. This script moves the file from the folder, opens paraview then moves it back after 5 seconds. You may want to modify it yourself to work on your environment.

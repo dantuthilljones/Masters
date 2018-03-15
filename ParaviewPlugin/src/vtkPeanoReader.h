@@ -21,8 +21,8 @@ public:
   vtkSetStringMacro(FileName);
   vtkGetStringMacro(FileName);
 
-  void SetPreview(int preview);
-  void SetPreviewSize(int x, int y, int z);
+  void SetOnTheFly(int preview);
+  void SetOnTheFlySize(int x, int y, int z);
 
 
   //Methods for selecting the resolution
@@ -48,6 +48,8 @@ private:
   PeanoMetaFile*  metaFile;
   vtkStringArray* resolutionsArray;
   std::string selectedResolution;
+
+  int flyX = 0, flyY = 0, flyZ = 0, fly = 0;
 
   //variables for caching
   //std::vector<vtkSmartPointer<vtkUnstructuredGrid>>  gridCache;
