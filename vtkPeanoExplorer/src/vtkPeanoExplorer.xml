@@ -1,34 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ServerManagerConfiguration>
-  <ProxyGroup name="filters">
-    <SourceProxy class="vtkPeanoExplorer"             label="Peano Explorer"             name="PeanoExplorer">
-      <Documentation long_help="Explore the peano dataset with this plugin!"                 short_help="Explore the peano dataset with this plugin!!">                 Some other documentation goes here</Documentation>
-      <InputProperty command="SetInputConnection"                 name="Input">
-        <ProxyGroupDomain name="groups">
-          <Group name="sources" />
-          <Group name="filters" />
-        </ProxyGroupDomain>
-        <DataTypeDomain name="input_type">
-          <DataType value="vtkUnstructuredGrid" />
-        </DataTypeDomain>
-        <InputArrayDomain attribute_type="point"                      name="input_array"                      optional="1" />
-        <Documentation>Set the input to the Generic Clip    filter.</Documentation>
-      </InputProperty>
-      <InputProperty is_internal="1" name="DummyInput">
-              <!-- Used when this source is added to a proxy list domain. -->
-            </InputProperty>
-
-            <PropertyGroup label="Volume Parameters" panel_widget="InteractiveBox">
-              <Property function="Position" name="Origin" />
-              <Property function="Scale" name="Scale" />
-            </PropertyGroup>
-            <Hints>
-              <ProxyList>
-                <Link name="DummyInput" with_property="Input" />
-              </ProxyList>
-            </Hints>
-
-      <!-- End GenericClip -->
-    </SourceProxy>
+  <ProxyGroup name="sources">
+      <SourceProxy class="vtkPeanoExplorer"
+                   label="Peano Explorer"
+                   name="GenericClip">
+        <Documentation long_help="Clip with an implicit plane, sphere or with scalars. Clipping does not reduce the dimensionality of the data set.  This output data type of this filter is always an unstructured grid."
+                       short_help="Clip with an implicit plane, sphere or with scalars.">
+                       The Generic Clip filter cuts away a portion of the input
+                       data set using a plane, a sphere, a box, or a scalar
+                       value. The menu in the Clip Function portion of the
+                       interface allows the user to select which implicit
+                       function to use or whether to clip using a scalar value.
+                       Making this selection loads the appropriate user
+                       interface. For the implicit functions, the appropriate 3D
+                       widget (plane, sphere, or box) is also displayed. The use
+                       of these 3D widgets, including their user interface
+                       components, is discussed in section 7.4. If an implicit
+                       function is selected, the clip filter returns that portion
+                       of the input data set that lies inside the function. If
+                       Scalars is selected, then the user must specify a scalar
+                       array to clip according to. The clip filter will return
+                       the portions of the data set whose value in the selected
+                       Scalars array is larger than the Clip value. Regardless of
+                       the selection from the Clip Function menu, if the Inside
+                       Out option is checked, the opposite portions of the data
+                       set will be returned. This filter operates on all types of
+                       data sets, and it returns unstructured grid data on
+                       output.</Documentation>
+        <InputProperty command="SetInputConnection"
+                       name="Input">
+          <ProxyGroupDomain name="groups">
+            <Group name="sources" />
+          </ProxyGroupDomain>
+          <DataTypeDomain name="input_type">
+            <DataType value="vtkUnstrcuturedGrid" />
+          </DataTypeDomain>
+          <Documentation>Set the input to the Generic Clip
+          filter.</Documentation>
+        </InputProperty>
+        <ProxyProperty command="SetClipFunction"
+                       label="Clip Type"
+                       name="ClipFunction">
+          <ProxyGroupDomain name="groups">
+            <Group name="implicit_functions" />
+          </ProxyGroupDomain>
+          <ProxyListDomain name="proxy_list">
+            <Proxy group="implicit_functions"
+                   name="Plane" />
+            <Proxy group="implicit_functions"
+                   name="Box" />
+            <Proxy group="implicit_functions"
+                   name="Sphere" />
+            <Proxy group="implicit_functions"
+                   name="Scalar" />
+          </ProxyListDomain>
+          <Documentation>Set the parameters of the clip function.</Documentation>
+        </ProxyProperty>
+        <DoubleVectorProperty information_only="1"
+                              name="InputBounds">
+          <BoundsDomain name="bounds">
+            <RequiredProperties>
+              <Property function="Input"
+                        name="Input" />
+            </RequiredProperties>
+          </BoundsDomain>
+        </DoubleVectorProperty>
+        <Hints>
+          <Visibility replace_input="2" />
+        </Hints>
+        <!-- End GenericClip -->
+      </SourceProxy>
   </ProxyGroup>
 </ServerManagerConfiguration>
