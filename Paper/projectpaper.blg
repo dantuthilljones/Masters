@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: projectpaper.aux
+The style file: agsm.bst
+Database file #1: projectpaper.bib
+Warning--entry type for "ExaHyPE" isn't style-file defined
+--line 11 of file projectpaper.bib
+Warning--entry type for "SCIRun2" isn't style-file defined
+--line 33 of file projectpaper.bib
+Warning--entry type for "VisIt" isn't style-file defined
+--line 40 of file projectpaper.bib
+Warning--entry type for "hdf5" isn't style-file defined
+--line 150 of file projectpaper.bib
+Warning--entry type for "hdfexplorer" isn't style-file defined
+--line 157 of file projectpaper.bib
+Warning--empty publisher in Paraview
+Warning--empty institution in MPI
+You've used 14 entries,
+            2909 wiz_defined-function locations,
+            731 strings with 6993 characters,
+and the built_in function-call counts, 32722 in all, are:
+= -- 5156
+> -- 404
+< -- 0
++ -- 2291
+- -- 119
+* -- 2606
+:= -- 6975
+add.period$ -- 18
+call.type$ -- 14
+change.case$ -- 189
+chr.to.int$ -- 14
+cite$ -- 16
+duplicate$ -- 185
+empty$ -- 401
+format.name$ -- 155
+if$ -- 5819
+int.to.chr$ -- 5
+int.to.str$ -- 0
+missing$ -- 7
+newline$ -- 59
+num.names$ -- 130
+pop$ -- 98
+preamble$ -- 1
+purify$ -- 205
+quote$ -- 0
+skip$ -- 147
+stack$ -- 0
+substring$ -- 6977
+swap$ -- 27
+text.length$ -- 186
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 54
+warning$ -- 2
+while$ -- 283
+width$ -- 0
+write$ -- 179
+(There were 7 warnings)

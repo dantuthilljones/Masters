@@ -216,4 +216,3 @@ PeanoPatch::~PeanoPatch() {
 		delete it.second;
 	}
 }
-

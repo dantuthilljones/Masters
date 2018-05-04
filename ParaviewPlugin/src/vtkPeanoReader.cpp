@@ -17,6 +17,8 @@
 #include "vtkSmartPointer.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
 #include "vtkStringArray.h"
+#include "vtkPVBox.h"
+#include "vtkImplicitFunction.h"
 
 //----------------------------------------------------------------------------
 vtkStandardNewMacro(vtkPeanoReader);
@@ -38,7 +40,8 @@ vtkPeanoReader::~vtkPeanoReader() {
   this->SetFileName(NULL);
 }
 
-int vtkPeanoReader::RequestInformation( vtkInformation* reqInfo, vtkInformationVector** inVector, vtkInformationVector* outVector) {
+int vtkPeanoReader::RequestInformation( vtkInformation* reqInfo,
+            vtkInformationVector** inVector, vtkInformationVector* outVector) {
     if(!this->Superclass::RequestInformation(reqInfo,inVector,outVector)) {
         return 0;
     }
@@ -54,6 +57,10 @@ int vtkPeanoReader::RequestInformation( vtkInformation* reqInfo, vtkInformationV
     std::cout << "Reading initial file " << this->GetFileName() << "...\n";
     metaFile = new PeanoMetaFile(this->GetFileName());
 
+    //tell paraview that I can provide time varying data
+    std::cout << "Telling paraview can handle time varying data\n";
+    info->Set(CAN_HANDLE_PIECE_REQUEST(), 1);
+
     //tell the caller what range of times I can deal with
     std::cout << "Telling paraview we have a time range of 0 to " << metaFile->numberOfDataSets() << "\n";
     double timeRange[2] = {0, metaFile->numberOfDataSets() -1};
@@ -68,10 +75,6 @@ int vtkPeanoReader::RequestInformation( vtkInformation* reqInfo, vtkInformationV
     }
     std::cout << "\n";
     info->Set(vtkStreamingDemandDrivenPipeline::TIME_STEPS(), timeSteps, metaFile->numberOfDataSets());
-
-    //tell paraview that I can provide time varying data
-    std::cout << "Telling paraview can handle time varying data\n";
-    info->Set(CAN_HANDLE_PIECE_REQUEST(), 1);
 
     //resize the cache, not currently used
     //gridCache.resize(numDatasets, vtkSmartPointer<vtkUnstructuredGrid>::New());
@@ -96,7 +99,8 @@ int vtkPeanoReader::RequestInformation( vtkInformation* reqInfo, vtkInformationV
 }
 
 //----------------------------------------------------------------------------
-int vtkPeanoReader::RequestData(vtkInformation *vtkNotUsed(request), vtkInformationVector **inputVector, vtkInformationVector *outputVector) {
+int vtkPeanoReader::RequestData(vtkInformation *vtkNotUsed(request), vtkInformationVector **inputVector,
+        vtkInformationVector *outputVector) {
     if (!this->GetFileName()) {
         vtkErrorMacro("Filename is not set");
         return 0;
@@ -131,9 +135,28 @@ int vtkPeanoReader::RequestData(vtkInformation *vtkNotUsed(request), vtkInformat
 
     if(fly) {
         std::cout << "Paraview has requested on the fly resolution (" << flyX << "," << flyY << "," << flyZ << ")\n";
-        std::cout << "Subsampling on to a new PeanoPatch...\n";
-        PeanoPatch* patch = metaFile->getDataSet(datasetIndex)->createSubSample(flyX, flyY, flyZ, false);
-        std::cout << "Done!\n";
+
+
+        PeanoPatch* patch = nullptr;
+
+        if(exploreFunction == nullptr) {
+            std::cout << "Subsampling on to a new PeanoPatch...\n";
+            patch = metaFile->getDataSet(datasetIndex)->createSubSample(flyX, flyY, flyZ, false);
+            std::cout << "Done subsampling!\n";
+        } else {
+            vtkPVBox* box = (vtkPVBox*) this->exploreFunction;
+            box->SetRotation(0,0,0);
+
+            double* position = new double[3];
+            double* scale = new double[3];
+
+            box->GetPosition(position);
+            box->GetScale(scale);
+
+            patch = metaFile->getDataSet(datasetIndex)->createSubSample(flyX, flyY, flyZ, position, scale);
+
+        }
+
 
         std::vector<PeanoPatch*>* patches = new std::vector<PeanoPatch*>();
         patches->push_back(patch);
@@ -155,7 +178,20 @@ int vtkPeanoReader::RequestData(vtkInformation *vtkNotUsed(request), vtkInformat
 
         std::vector<PeanoReader*>* readers = nullptr;
 
-        if(selectedResolution.compare("Full") == 0) {
+        if(exploreFunction != nullptr) {
+            std::cout << "Loading patches inside selection box...\n";
+            vtkPVBox* box = (vtkPVBox*) this->exploreFunction;
+            box->SetRotation(0,0,0);
+
+            double* position = new double[3];
+            double* scale = new double[3];
+
+            box->GetPosition(position);
+            box->GetScale(scale);
+
+            readers = metaFile->getDataSet(datasetIndex)->getReadersInside(exploreFunction);
+
+        } else if(selectedResolution.compare("Full") == 0) {
             readers = metaFile->createReadersFull(datasetIndex);
         } else {
             for(int i = 1; i < resolutionsArray->GetNumberOfValues(); i++) {
@@ -195,10 +231,6 @@ vtkStringArray *vtkPeanoReader::GetResolutions() {
     return resolutionsArray;
 }
 
-
-
-
-
 void vtkPeanoReader::SetOnTheFly(int fly) {
     std::cout << "SetOntheFly called with value " << fly <<"\n";
     this->fly = fly;
@@ -210,6 +242,16 @@ void vtkPeanoReader::SetOnTheFlySize(int x, int y, int z) {
     this->flyX = x;
     this->flyY = y;
     this->flyZ = z;
+}
+
+void vtkPeanoReader::SetBoxFunction(vtkImplicitFunction* pointer) {
+    std::cout << "SetBoxFunction called!\n";
+
+    if(pointer == nullptr) {
+        std::cout << "Implicit Function Null!\n";
+    }
+
+    this->exploreFunction = pointer;
 }
 
 //----------------------------------------------------------------------------

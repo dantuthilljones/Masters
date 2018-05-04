@@ -30,5 +30,7 @@ void PeanoPatchData::setData(int index, double* pointer) {
 }
 
 PeanoPatchData::~PeanoPatchData() {
+	//std::cout << "Deleting values from patch data\n";
 	delete [] values;
+	//std::cout << "Done deleting patch data values\n";
 }

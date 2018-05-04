@@ -30,7 +30,7 @@
         </Documentation>
       </DoubleVectorProperty>
       <IntVectorProperty
-          name="Subsample on the fly"
+          name="Sample on the fly"
           command="SetOnTheFly"
           number_of_elements="1"
           default_values="0">
@@ -43,7 +43,7 @@
       <IntVectorProperty
           command="SetOnTheFlySize"
           default_values="10 10 10"
-          name="Subsample resolution"
+          name="Sample resolution"
           number_of_elements="3">
         <IntRangeDomain name="range"/>
         <Documentation>
@@ -74,6 +74,22 @@
       </StringVectorProperty>
       <!-- End Resolution selection GUI -->
 
+      <!-- Area Selection GUI -->
+      <ProxyProperty command="SetBoxFunction"
+                       label="Explore Area"
+                       name="ClipFunction">
+          <ProxyGroupDomain name="groups">
+            <Group name="implicit_functions" />
+          </ProxyGroupDomain>
+          <ProxyListDomain name="proxy_list">
+        <Proxy group="implicit_functions"
+                      name="None" />
+            <Proxy group="implicit_functions"
+                   name="Box" />
+          </ProxyListDomain>
+          <Documentation>Set the parameters of the clip function.</Documentation>
+        </ProxyProperty>
+        <!-- End of Area Selection GUI -->
 
       <Hints>
         <ReaderFactory

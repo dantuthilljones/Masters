@@ -16,6 +16,7 @@ class PeanoConverter {
 	static vtkSmartPointer<vtkUnstructuredGrid> toUnstructuredGrid(PeanoPatch* patch);
 	static int xyzToIndex(int x, int y, int z, int dimensions[3]);
 	static PeanoPatch* subSample(std::vector<PeanoReader*> &readers, int x, int y, int z);
+	static PeanoPatch* subSample(std::vector<PeanoReader*> &readers, int x, int y, int z, double* offsets, double* sizes);
 	static std::vector<int> getOverlappingIndexes(PeanoPatch &patch, vtkSmartPointer<vtkImageData> image);
 };
 

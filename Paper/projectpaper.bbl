@@ -1,0 +1,78 @@
+\begin{thebibliography}{xx}
+
+\harvarditem{ASCI}{2002}{VisIt}
+ASCI  \harvardyearleft 2002\harvardyearright , `Visit'.
+\newline\harvardurl{https://wci.llnl.gov/simulation/computer-codes/visit/}
+
+\harvarditem{Ayachit}{2015}{Paraview}
+Ayachit, U.  \harvardyearleft 2015\harvardyearright , {\em The ParaView Guide:
+  A Parallel Visualization Application}.
+
+\harvarditem{Dongarra et~al.}{2011}{Dongarra}
+Dongarra et~al.  \harvardyearleft 2011\harvardyearright , `The international
+  exascale software project roadmap', {\em High Performance Computer
+  Applications} {\bf 25}(1),~3--60.
+\newline\harvardurl{http://dx.doi.org/10.1177/1094342010391989}
+
+\harvarditem{Dubey et~al.}{2014}{DUBEY20143217}
+Dubey, A. et~al.  \harvardyearleft 2014\harvardyearright , `A survey of high
+  level frameworks in block-structured adaptive mesh refinement packages', {\em
+  Journal of Parallel and Distributed Computing} {\bf 74}(12),~3217 -- 3227.
+\newblock Domain-Specific Languages and High-Level Frameworks for
+  High-Performance Computing.
+\newline\harvardurl{http://www.sciencedirect.com/science/article/pii/S0743731514001178}
+
+\harvarditem{ExaHyPE}{2015}{exahype}
+ExaHyPE  \harvardyearleft 2015\harvardyearright , `Exascale hyperbolic pde
+  engine'.
+\newline\harvardurl{http://exahype.eu}
+
+\harvarditem{Forum}{1994}{MPI}
+Forum, M.~P.  \harvardyearleft 1994\harvardyearright , Mpi: A message-passing
+  interface standard, Technical report, Knoxville, TN, USA.
+
+\harvarditem{{\em HDF Explorer}}{2017}{hdfexplorer}
+{\em HDF Explorer}  \harvardyearleft 2017\harvardyearright .
+\newline\harvardurl{https://www.hdfeos.org/software/hdfexplorer.php}
+
+\harvarditem{Institute}{2016}{SCI:SCIRun}
+Institute, S.  \harvardyearleft 2016\harvardyearright .
+\newblock SCIRun: A Scientific Computing Problem Solving Environment,
+  Scientific Computing and Imaging Institute (SCI), Download from:
+  http://www.scirun.org.
+
+\harvarditem{Lorensen \harvardand\ Cline}{1987}{Lorensen:1987:MCH:37402.37422}
+Lorensen, W.~E. \harvardand\ Cline, H.~E.  \harvardyearleft
+  1987\harvardyearright , `Marching cubes: A high resolution 3d surface
+  construction algorithm', {\em SIGGRAPH Comput. Graph.} {\bf 21}(4),~163--169.
+\newline\harvardurl{http://doi.acm.org/10.1145/37402.37422}
+
+\harvarditem{Mittal}{2017}{ValuePredictionTechniques}
+Mittal, S.  \harvardyearleft 2017\harvardyearright , `A survey of value
+  prediction techniques for leveraging value locality', {\em Wiley
+  InterScience} .
+\newline\harvardurl{https://www.academia.edu/33619227/A\_Survey\_of\_Value\_Prediction\_Techniques\_for\_Leveraging\_Value\_Locality}
+
+\harvarditem{{The HDF Group}}{1997-2018}{hdf5}
+{The HDF Group}  \harvardyearleft 1997-2018\harvardyearright , `{Hierarchical
+  Data Format, version 5}'.
+\newblock http://www.hdfgroup.org/HDF5/.
+
+\harvarditem{Tim~Harris}{2010}{TransMemory}
+Tim~Harris, James~Larus, R.~R.  \harvardyearleft 2010\harvardyearright ,
+  `Transactional memory, 2nd edition', {\em Synthesis Lectures on Computer
+  Architecture} {\bf 5}(1),~1--263.
+\newline\harvardurl{https://doi.org/10.2200/S00272ED1V01Y201006CAC011}
+
+\harvarditem{Weinstein}{2016}{SCIRun2}
+Weinstein, D.~M.  \harvardyearleft 2016\harvardyearright , `Visualization in
+  the scirun problem solving environment'.
+\newline\harvardurl{http://www-rev.sci.utah.edu/publications/dmw05/chapter-rev4.pdf}
+
+\harvarditem{Weinzierl et~al.}{2018}{Peano}
+Weinzierl, T. et~al.  \harvardyearleft 2018\harvardyearright , `Peano---a
+  {F}ramework for {PDE} {S}olvers on {S}pacetree {G}rids'.
+\newblock http://www.peano-framework.org.
+\newline\harvardurl{http://www.peano-framework.org}
+
+\end{thebibliography}

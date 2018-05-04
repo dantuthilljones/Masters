@@ -217,11 +217,6 @@ PeanoPatch* PeanoConverter::subSample(std::vector<PeanoReader*> &readers, int x,
 		}
 	}
 
-	std::vector<int> patchSize;
-	patchSize.push_back(x);
-	patchSize.push_back(y);
-	patchSize.push_back(z);
-
 	int* resolution = new int[3];
 	resolution[0] = x;
 	resolution[1] = y;
@@ -247,10 +242,6 @@ PeanoPatch* PeanoConverter::subSample(std::vector<PeanoReader*> &readers, int x,
 
 	int outputCells = x*y*z;
 	int outputVertices = (x+1)*(y+1)*(z+1);
-
-
-	//std::unordered_map<std::string, PeanoPatchData*> patchData;
-
 
 	//create a list of patchData for the new patch
 	std::vector<PeanoPatchData*> datas;
@@ -343,5 +334,142 @@ PeanoPatch* PeanoConverter::subSample(std::vector<PeanoReader*> &readers, int x,
 			}
 		}
 	}
+	return outPatch;
+}
+
+PeanoPatch* PeanoConverter::subSample(std::vector<PeanoReader*> &readers,
+	int x, int y, int z, double* offsets, double* sizes) {
+	std::vector<PeanoPatch*> patches;
+
+	int* resolution = new int[3];
+	resolution[0] = x;
+	resolution[1] = y;
+	resolution[2] = z;
+
+	//put the pieces together
+	std::cout << "Putting patch together\n";
+	PeanoPatch* outPatch = new PeanoPatch();
+	outPatch->dimensions = 3;
+	outPatch->offsets = offsets;
+	outPatch->resolution = resolution;
+	outPatch->sizes = sizes;
+
+	int outputCells = x*y*z;
+	int outputVertices = (x+1)*(y+1)*(z+1);
+
+	//Collect all the patches
+	for(uint i = 0; i < readers.size(); i++) {
+		//add all the reader's patches to the patch vector
+		std::vector<PeanoPatch*> currentPatches = readers[i]->patches;
+		for(uint j = 0; j < currentPatches.size(); j++) {
+			patches.push_back(currentPatches[j]);
+		}
+	}
+
+	//std::unordered_map<std::string, PeanoPatchData*> patchData;
+
+	std::cout << "getting patch data information\n";
+	//create a list of patchData for the new patch
+	std::vector<PeanoPatchData*> datas;
+	PeanoPatch* patch1 = patches[0];
+	for (auto it : patch1->patchData) {
+		PeanoVariable* var = it.second->structure;
+		PeanoVariable* newVar = new PeanoVariable(var->name, var->unknowns, var->type,
+				(var->type==Cell_Values?outputCells:outputVertices), nullptr, -1);
+
+		PeanoPatchData* newData = new PeanoPatchData(newVar);
+		//set all values to 0
+		for(int j = 0; j < newVar->totalValues; j++) {
+			newData->values[j] = 0;
+		}
+
+		//add the data to the patch and to our list of data objects
+		outPatch->patchData[newData->structure->name] = newData;
+		datas.push_back(newData);
+	}
+
+
+	std::cout << "mapping data on to new patch\n";
+	for(uint i = 0; i < patches.size(); i++) {
+		PeanoPatch* patch = patches[i];
+		for (uint dataIndex = 0; dataIndex < datas.size(); dataIndex++) {
+			PeanoPatchData* newData = datas[dataIndex];
+			PeanoVariable* newVar = newData->structure;
+			PeanoPatchData* oldData = patch->patchData[newData->structure->name];
+			PeanoVariable* oldVar = oldData->structure;
+
+			int unknowns = newVar->unknowns;
+			double* data = oldData->values;
+
+			int x = 0;
+			int y = 0;
+			int z = 0;
+
+			//std::cout << "total values = " << oldVar->totalValues << "\n";
+
+			if(newData->structure->type == Cell_Values) {
+				for(int j = 0; j < oldVar->totalValues; j+= oldVar->unknowns) {
+					double* position = patch->getPositionCellCenter(x,y,z);
+
+					//see my notes for this equation
+					int xCell = (position[0] - offsets[0])*resolution[0]/sizes[0];
+					int yCell = (position[1] - offsets[1])*resolution[1]/sizes[1];
+					int zCell = (position[2] - offsets[2])*resolution[2]/sizes[2];
+
+					delete position;
+
+					//check this cell lands within the new patch TODO for points as well!
+					if(xCell >= 0 && xCell < resolution[0] && yCell >= 0 && yCell < resolution[1]
+						&& zCell >= 0 && zCell < resolution[2]) {
+
+						int index = outPatch->getIndexCellData(xCell, yCell, zCell);
+						newData->setData(index, data +j);
+					}
+
+					//increment the x,y,z values
+					z++;
+					if(z == patch->resolution[2]) {
+						z = 0;
+						y++;
+						if(y == patch->resolution[1]) {
+							y = 0;
+							x++;
+						}
+					}
+				}
+				int breakpoint = 0;
+			} else {//Vertex_Values
+				for(int j = 0; j < oldVar->totalValues; j+= oldVar->unknowns) {
+					double* position = patch->getPositionVertex(x,y,z);
+
+					//see my notes for this equation
+					int xVert = ((position[0] - offsets[0])*resolution[0]/sizes[0])+0.5;
+					int yVert = ((position[1] - offsets[1])*resolution[1]/sizes[1])+0.5;
+					int zVert = ((position[2] - offsets[2])*resolution[2]/sizes[2])+0.5;
+
+					delete position;
+
+					if(xVert >= 0 && xVert < resolution[0] +1 && yVert >= 0 && yVert < resolution[1] +1
+						&& zVert >= 0 && zVert < resolution[2] +1) {
+						int index = outPatch->getIndexVertexData(xVert, yVert, zVert);
+						if(index >= 0 && index < newData->structure->totalValues)
+							newData->setData(index, data +j);
+						}
+					//increment the x,y,z values
+					z++;
+					if(z == patch->resolution[2] +1) {
+						z = 0;
+						y++;
+						if(y == patch->resolution[1] +1) {
+							y = 0;
+							x++;
+						}
+					}
+				}
+				int breakpoint = 0;
+			}
+		}
+	}
+	std::cout << "returning outpatch from converter\n";
 	return outPatch;
 }

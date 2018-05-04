@@ -22,10 +22,15 @@
 #include "boost/algorithm/string/trim.hpp"
 #include "boost/lexical_cast.hpp"
 
+#include "vtkImplicitFunction.h"
+
 
 class PeanoPatch {
 public:
-	PeanoPatch(std::vector<std::string> &text, int dimensions, int* patchSize, std::vector<PeanoVariable*> &variables) ;
+	PeanoPatch(std::vector<std::string> &text, int dimensions, int* patchSize, std::vector<PeanoVariable*> &variables);
+	PeanoPatch(std::vector<std::string> &text, int dimensions,
+		int* patchSize, std::vector<PeanoVariable*> &variables,
+	 	vtkImplicitFunction*) ;
 	PeanoPatch();
 	virtual ~PeanoPatch();
 	int dimensions;//number of dimensions, probably 3
@@ -54,6 +59,11 @@ public:
 	int getIndexCellData(int x, int y, int z);
 	int getIndexVertexData(int x, int y, int z);
 	bool saveToFile(std::string filename);
+
+	/*
+	 * used to flag that this patch is inside or outside the selected area
+	 */
+	bool loaded = true;
 };
 
 #endif /* PEANOPATCH_H_ */

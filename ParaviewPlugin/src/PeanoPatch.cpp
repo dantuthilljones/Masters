@@ -22,6 +22,8 @@
 #include "boost/algorithm/string/classification.hpp"
 #include "boost/algorithm/string/trim.hpp"
 
+#include "vtkImplicitFunction.h"
+
 PeanoPatch::PeanoPatch() {
 	offsets = nullptr;
 	sizes = nullptr;
@@ -29,7 +31,8 @@ PeanoPatch::PeanoPatch() {
 	dimensions = -1;
 }
 
-PeanoPatch::PeanoPatch(std::vector<std::string> &text, int dimensions, int* patchSize, std::vector<PeanoVariable*> &variables) {
+PeanoPatch::PeanoPatch(std::vector<std::string> &text, int dimensions, int* patchSize,
+	std::vector<PeanoVariable*> &variables) {
 	//std::cout << "Starting PeanoPatch\n";
 	this->dimensions = dimensions;
 	this->resolution = patchSize;
@@ -100,6 +103,101 @@ PeanoPatch::PeanoPatch(std::vector<std::string> &text, int dimensions, int* patc
 		}
 	}
 }
+
+
+PeanoPatch::PeanoPatch(std::vector<std::string> &text, int dimensions, int* patchSize,
+	std::vector<PeanoVariable*> &variables,
+	vtkImplicitFunction* box) {
+	std::cout << "Starting PeanoPatch with box params\n";
+	this->dimensions = dimensions;
+	this->resolution = patchSize;
+
+	//calculate the number of cells in the patch
+	int cells = 1;
+	for(int i = 0; i < dimensions; i++) {
+		cells *= patchSize[i];
+	}
+
+	//initialize the data objects for each variable
+	for(uint i = 0; i < variables.size(); i++) {
+		PeanoPatchData* data = new PeanoPatchData(variables[i]);
+		patchData[data->structure->name] = data;
+	}
+
+	//std::cout << "text size: " << text.size() << "\n";
+
+	for(uint i = 0; i < text.size(); i++) {
+		//std::cout << "Patch line " << i << "\n";
+		std::string line = text[i];
+		boost::trim(line);
+
+		if(boost::starts_with(line, "offset")) {
+
+			//split the line which will be in the form "offset 0 0"
+			std::vector<std::string> split;
+			boost::split(split, line, boost::is_any_of(" "));
+
+			//create an array to hold the number  of offsets
+			offsets = new double[dimensions];
+			for(int j = 0; j < dimensions; j++) {
+				offsets[j] = std::stod(split[j+1]);//the 0th element of split is "offset" so skip it
+			}
+		} else if(boost::starts_with(line, "size")) {
+			//split the line which will be in the form "size 0 0"
+			std::vector<std::string> split;
+			boost::split(split, line, boost::is_any_of(" "));
+
+			//create an array to hold the number  of offsets
+			sizes = new double[dimensions];
+			for(int j = 0; j < dimensions; j++) {
+				sizes[j] = std::stod(split[j+1]);//the 0th element of split is "offset" so skip it
+			}
+
+
+			//now that we have initialized the size, then we can check if this patch is in the selected zone
+			if( box->FunctionValue(offsets[0] , offsets[1], offsets[2]) > 0 &&
+				box->FunctionValue(offsets[0] + sizes[0], offsets[1], offsets[2]) > 0 &&
+				box->FunctionValue(offsets[0] , offsets[1] + sizes[1], offsets[2]) > 0 &&
+				box->FunctionValue(offsets[0] , offsets[1], offsets[2] + sizes[2]) > 0 &&
+				box->FunctionValue(offsets[0] + sizes[0] , offsets[1] + sizes[1], offsets[2]) > 0 &&
+				box->FunctionValue(offsets[0] + sizes[0] , offsets[1], offsets[2] + sizes[2]) > 0 &&
+				box->FunctionValue(offsets[0] , offsets[1] + sizes[1], offsets[2] + sizes[2]) > 0 &&
+				box->FunctionValue(offsets[0] + sizes[0] , offsets[1] + sizes[1], offsets[2] + sizes[2]) > 0) {
+
+				std::cout << "Skipping PeanoPatch because not inside selection zone\n";
+				loaded = false;
+				return;
+			}
+
+		} else if(boost::starts_with(line,"begin cell-values") || boost::starts_with(line,"begin vertex-values")) {
+
+			std::cout << "reading patch data values\n";
+
+			//get the variable we are looking for
+			std::vector<std::string> split;
+			boost::split(split, line, boost::is_any_of(" "));
+			std::string variableName = split[2];
+			variableName = variableName.substr(1, variableName.size() -2);
+
+			//get the data object for this variable
+			PeanoPatchData* data = patchData[variableName];
+
+			//get the line of text containing the values and trim whitespace
+			std::string vals = text[i+1];
+			boost::trim(vals);
+
+			//split the line of text to get a vector of string values
+			std::vector<std::string> splitValues;
+			boost::split(splitValues, vals, boost::is_any_of(" "));
+
+			//convert the strings to doubles and add to the array
+			for(int j = 0; j < data->structure->totalValues; j++) {
+				data->values[j] = std::stod(splitValues[j]);
+			}
+		}
+	}
+}
+
 
 bool PeanoPatch::saveToFile(std::string filename) {
 	std::cout << "\nSaving patch to file " << filename << "\n";
@@ -210,10 +308,15 @@ int PeanoPatch::getIndexVertexData(int x, int y, int z) {
 
 
 PeanoPatch::~PeanoPatch() {
+
+	//std::cout << "Deleting offsets\n";
 	delete [] offsets;
+	//std::cout << "Deleting sizes\n";
 	delete [] sizes;
+	//std::cout << "Deleting data\n";
 	for (auto it : patchData) {
 		delete it.second;
 	}
-}
 
+	//std::cout << "Done deleting peano reader\n";
+}

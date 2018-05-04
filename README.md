@@ -43,7 +43,7 @@ For example the command `./PeanoStandalone subsample /home/dan/Documents/Masters
 ####
 
 ## Paraview Plugin
-The second is a plugin for the scientific viewing software Paraview. This adds the standalone program's functionality to paraview, allowing you to load pre-computed subsampled data or subsampling it on the fly.
+The second is a plugin for the scientific viewing software Paraview. This adds the standalone program's functionality to paraview, allowing you to load pre-computed subsampled data or subsampling it on the fly. You can also select specific areas of datasets and only load the patches within the selected area.
 
 ### Installation
 The installation for the paraview plug in is much more long-winded than for the subsampler because it requires you to compile your own version of paraview. A guide for this can be found here https://www.paraview.org/Wiki/ParaView:Build_And_Install

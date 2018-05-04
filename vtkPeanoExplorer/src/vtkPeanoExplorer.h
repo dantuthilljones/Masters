@@ -18,8 +18,10 @@ public:
      * do not define an implicit function, then the input scalar data will be
      * used for clipping.
      */
-    virtual void SetClipFunction(vtkImplicitFunction*);
+    virtual void SetBoxFunction(vtkImplicitFunction*);
     //@}
+
+    vtkImplicitFunction *BoxFunction;
 
 
 };

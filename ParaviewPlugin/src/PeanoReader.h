@@ -14,9 +14,12 @@
 #include "PeanoVariable.h"
 #include "PeanoPatch.h"
 
+#include "vtkImplicitFunction.h"
+
 class PeanoReader {
 public:
 	PeanoReader(const std::string &file);
+	PeanoReader(const std::string &file, vtkImplicitFunction*);
 	virtual ~PeanoReader();
 	//declare variables
 	int dimensions = -1;

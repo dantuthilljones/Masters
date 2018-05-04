@@ -56,7 +56,7 @@ PeanoDataSet::PeanoDataSet(std::vector<std::string> &lines, std::string director
 			fullData->push_back(fileName);
 		}
 	}
-	std::cout << fullData->size() << " file(s) found for this dataset \n";
+	//std::cout << fullData->size() << " file(s) found for this dataset \n";
 
 }
 
@@ -147,6 +147,23 @@ PeanoPatch* PeanoDataSet::createSubSample(int x, int y, int z, bool saveToFile) 
 	return sample;
 }
 
+PeanoPatch* PeanoDataSet::createSubSample(int x, int y, int z, double* position, double* sizes) {
+	std::vector<PeanoReader*>* readers = createReadersFull();
+
+	std::cout << "Subsampling on to 3D widget\n";
+	PeanoPatch* sample = PeanoConverter::subSample(*readers, x, y, z, position, sizes);
+	std::cout << "Done subsampling on to 3D widget!\n";
+
+	for(uint i = 0; i < readers->size(); i++) {
+		delete readers->at(i);
+	}
+	//TODO possibly remove delete next line
+	//delete readers;
+
+	std::cout << "Returning in dataset subsample 3d widget\n";
+	return sample;
+}
+
 std:: string PeanoDataSet::getDirectory() {
 	return directory;
 }
@@ -159,6 +176,20 @@ std::vector<std::vector<int>>* PeanoDataSet::getResolutions() {
 }
 std::string PeanoDataSet::getResolution(int index) {
 	return resolutionData->at(index);
+}
+
+std::vector<PeanoReader*>* PeanoDataSet::getReadersInside(vtkImplicitFunction* box) {
+	std::vector<PeanoReader*>* readers = new std::vector<PeanoReader*>();
+	//std::cout << "Readers list created!\n";
+	//std::cout << "Readers populating list from dataset with size " << fullData.size() << "\n";
+	for(uint i = 0; i < fullData->size(); i++) {
+		std::cout << "Reading index " << i << "\n";
+		std::cout << "Reading file " << fullData->at(i)<< "...\n";
+		readers->push_back(new PeanoReader(directory + fullData->at(i), box));
+	}
+	std::cout << "Dataset finished creating readers!\n";
+
+	return readers;
 }
 
 PeanoDataSet::~PeanoDataSet() {

@@ -1,0 +1,105 @@
+\relax 
+\providecommand{\transparent@use}[1]{}
+\bibstyle{agsm}
+\providecommand\tcolorbox@label[2]{}
+\citation{exahype}
+\citation{Peano}
+\citation{DUBEY20143217}
+\citation{Paraview}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The recursive partitioning of a cube by an octree\relax }}{2}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{spacetree}{{1}{2}}
+\citation{Dongarra}
+\citation{TransMemory}
+\citation{ValuePredictionTechniques}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A comparison of the traditional simulation workflow and our proposed workflow\relax }}{3}}
+\newlabel{workflows}{{2}{3}}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}International Exascale Software Project Roadmap}{3}}
+\citation{SCI:SCIRun}
+\citation{SCIRun2}
+\citation{VisIt}
+\citation{MPI}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}SCI Run}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C}VisIt}{4}}
+\citation{MPI}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D}ExaHyPE directly writing to VTK}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E}Peano File Format}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.1}Peano Metadata Files}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces A Peano Metadata file with two datasets and four patch files\relax }}{5}}
+\newlabel{metadata-original}{{3}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.2}Peano Patch Files}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A Peano Patch file with two three-dimensional patches\relax }}{6}}
+\newlabel{patch-file}{{4}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Solution}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Overview}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Data Representation Layer}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C}Conversion of Patch objects to VTK Objects}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D}Sampling}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {D.1}Mapping}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {D.2}Sampling Methods}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces A full resolution dataset, an 8x8x8 dataset and a 4x4x4 dataset.\relax }}{9}}
+\newlabel{three-cubes}{{5}{9}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {D.3}Spacetree based sampling}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces The spacetree decimation process\relax }}{9}}
+\newlabel{spacetree-decimation}{{6}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E}Integration of Multiscale Datasets}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces A Peano Metadata file with two datasets and two resolutions per dataset\relax }}{10}}
+\newlabel{metadata-new}{{7}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {F}ParaView Plugin}{10}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {F.1}Workflow}{10}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {F.2}User Interface}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces The workflow of the ParaView plugin\relax }}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces The Plugin's ParaView Interface\relax }}{11}}
+\newlabel{ParaView-interface}{{9}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Results}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Generating Test Data}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces The interative explore box used to select areas of the dataset in ParaView\relax }}{12}}
+\newlabel{interactive-box}{{10}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces The parameter interface of the exploration box\relax }}{12}}
+\newlabel{box-manual}{{11}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Performance of Standalone}{12}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces The time taken to sample various datasets on to a 20x20x20 grid\relax }}{13}}
+\newlabel{standalone-table}{{1}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces A graph of the time taken to sample various datasets on to a 20x20x20 grid\relax }}{13}}
+\newlabel{standalone-time-graph}{{12}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C}Performance of Reading Patch Files}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D}Exploration Time}{13}}
+\citation{hdf5}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces The time taken to load a varying number of patches from different size files\relax }}{14}}
+\newlabel{explore-graph}{{2}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces A graph of the time taken to load different numbers of patches across different files\relax }}{14}}
+\newlabel{explore-graph}{{13}{14}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Evaluation}{14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Improvements}{14}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.1}HDF5 Support}{14}}
+\citation{hdfexplorer}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2}Sampling}{15}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Time complexity of mapping to a point in space to a point in the dataset\relax }}{15}}
+\newlabel{time-complexities}{{3}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.3}Parallelisation}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Problems}{16}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {B.1}Sampling}{16}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {B.2}Area Selection Interface}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusions}{16}}
+\citation{Lorensen:1987:MCH:37402.37422}
+\bibdata{projectpaper}
+\harvardcite{VisIt}{ASCI}{ASCI}{2002}
+\harvardcite{Paraview}{Ayachit}{Ayachit}{2015}
+\harvardcite{Dongarra}{Dongarra et~al.}{Dongarra et~al.}{2011}
+\harvardcite{DUBEY20143217}{Dubey et~al.}{Dubey et~al.}{2014}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces The areas of a regular grid with no data sampled onto it (blue)\relax }}{17}}
+\newlabel{blank-artifacts}{{14}{17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Importance}{17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Applications}{17}}
+\harvardcite{exahype}{ExaHyPE}{ExaHyPE}{2015}
+\harvardcite{MPI}{Forum}{Forum}{1994}
+\harvardcite{hdfexplorer}{{\em HDF Explorer}}{{\em HDF Explorer}}{2017}
+\harvardcite{SCI:SCIRun}{Institute}{Institute}{2016}
+\harvardcite{Lorensen:1987:MCH:37402.37422}{Lorensen \harvardand \ Cline}{Lorensen \harvardand \ Cline}{1987}
+\harvardcite{ValuePredictionTechniques}{Mittal}{Mittal}{2017}
+\harvardcite{hdf5}{{The HDF Group}}{{The HDF Group}}{1997-2018}
+\harvardcite{TransMemory}{Tim~Harris}{Tim~Harris}{2010}
+\harvardcite{SCIRun2}{Weinstein}{Weinstein}{2016}
+\harvardcite{Peano}{Weinzierl et~al.}{Weinzierl et~al.}{2018}

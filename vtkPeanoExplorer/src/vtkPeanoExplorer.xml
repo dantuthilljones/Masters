@@ -25,20 +25,9 @@
                        the selection from the Clip Function menu, if the Inside
                        Out option is checked, the opposite portions of the data
                        set will be returned. This filter operates on all types of
-                       data sets, and it returns unstructured grid data on
-                       output.</Documentation>
-        <InputProperty command="SetInputConnection"
-                       name="Input">
-          <ProxyGroupDomain name="groups">
-            <Group name="sources" />
-          </ProxyGroupDomain>
-          <DataTypeDomain name="input_type">
-            <DataType value="vtkUnstrcuturedGrid" />
-          </DataTypeDomain>
-          <Documentation>Set the input to the Generic Clip
-          filter.</Documentation>
-        </InputProperty>
-        <ProxyProperty command="SetClipFunction"
+                       data sets, and it returns unstructured grid data on output.
+        </Documentation>
+        <ProxyProperty command="SetBoxFunction"
                        label="Clip Type"
                        name="ClipFunction">
           <ProxyGroupDomain name="groups">
@@ -46,13 +35,7 @@
           </ProxyGroupDomain>
           <ProxyListDomain name="proxy_list">
             <Proxy group="implicit_functions"
-                   name="Plane" />
-            <Proxy group="implicit_functions"
                    name="Box" />
-            <Proxy group="implicit_functions"
-                   name="Sphere" />
-            <Proxy group="implicit_functions"
-                   name="Scalar" />
           </ProxyListDomain>
           <Documentation>Set the parameters of the clip function.</Documentation>
         </ProxyProperty>

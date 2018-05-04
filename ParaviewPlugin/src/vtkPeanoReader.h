@@ -8,6 +8,7 @@
 #include <vtkUnstructuredGrid.h>
 #include <vtkSmartPointer.h>
 #include <vtkStringArray.h>
+#include <vtkImplicitFunction.h>
 
 #include "PeanoMetaFile.h"
 
@@ -28,6 +29,9 @@ public:
   //Methods for selecting the resolution
   void SetResolution(const char* status);
   vtkStringArray *GetResolutions();
+
+  //3D widget selection
+  void SetBoxFunction(vtkImplicitFunction*);
 
 protected:
   char* FileName;
@@ -50,6 +54,8 @@ private:
   std::string selectedResolution;
 
   int flyX = 0, flyY = 0, flyZ = 0, fly = 0;
+
+  vtkImplicitFunction* exploreFunction = nullptr;
 
   //variables for caching
   //std::vector<vtkSmartPointer<vtkUnstructuredGrid>>  gridCache;
